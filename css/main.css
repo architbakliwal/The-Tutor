@@ -10,6 +10,9 @@
 
 .label:hover {
     cursor: pointer;
+    color: #ffffff;
+    background-color: #1a242f;
+    border-color: #161f29;
 }
 
 .label-school {
@@ -52,7 +55,8 @@
     background-color: #2c3e50;
 }
 
-.btn-search {
+.btn-search,
+.btn-back {
     color: #ffffff;
     font-weight: bold;
     margin: 0.5em auto;
@@ -534,7 +538,7 @@ Result list
 .surveys {
     list-style: none;
     width: 90%;
-    max-width: 600px;
+    max-width: 1000px;
     margin: 30px auto;
     padding: 0;
     text-align: left;
@@ -543,9 +547,10 @@ Result list
 .survey-item {
     display: block;
     margin-top: 10px;
-    padding: 20px;
-    border-radius: 2px;
+    padding: 10px;
+    border-radius: 4px;
     background: #2C3E50;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
 }
 
 .survey-name {
@@ -589,7 +594,7 @@ Result list
 .list .survey-progress,
 .list .survey-completes,
 .list .survey-end-date {
-    color: #A1A1A4;
+    color: #ffffff;
 }
 
 .list .survey-country,
@@ -634,7 +639,7 @@ Result list
 }
 
 .survey-stage .stage.active {
-    background: #A1A1A4;
+    background: #ffffff;
 }
 
 .list .list-only {
@@ -657,9 +662,9 @@ Result list
     position: relative;
     display: inline-block;
     vertical-align: top;
-    height: 200px;
-    width: 250px;
-    margin: 10px;
+    height: 100px;
+    width: 230px;
+    margin: 8.5px;
 }
 
 @media screen and (max-width: 600px) {
@@ -673,20 +678,23 @@ Result list
 
 .grid .survey-name {
     display: block;
-    max-width: 80%;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    /*text-align: center;*/
+    margin: 5px 0 10px 0;
 }
 
-.grid .survey-country {
-    font-size: 11px;
+.grid .survey-category,
+.grid .survey-contact {
+    font-size: 12px;
     line-height: 16px;
     text-transform: uppercase;
 }
 
-.grid .survey-country,
-.grid .survey-end-date {
-    color: #A1A1A4;
+.grid .survey-category {
+    color: #ffffff;
 }
 
 .grid .survey-end-date:before {

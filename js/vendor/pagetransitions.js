@@ -4,6 +4,7 @@ var PageTransitions = (function() {
         $pages = $main.children('div.pt-page'),
         $searchButton = $('#btn-search'),
         $category = $('.cd-form .label'),
+        $backButton = $('#btn-back'),
         animcursor = 1,
         pagesCount = $pages.length,
         current = 0,
@@ -43,6 +44,14 @@ var PageTransitions = (function() {
                 return false;
             }
             animcursor = $category.data('animation');
+            nextPage(animcursor);
+        });
+
+        $backButton.on('click', function() {
+            if (isAnimating) {
+                return false;
+            }
+            animcursor = $backButton.data('animation');
             nextPage(animcursor);
         });
 
