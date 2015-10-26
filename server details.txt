@@ -1,3 +1,2 @@
-cpanel: http://thetutor.in/cpanel
 username: thetutorcompany
-password: Dhingar001 
+password: Dhingar001

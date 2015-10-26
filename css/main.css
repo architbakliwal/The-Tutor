@@ -9,7 +9,8 @@
 .jumbotron {
     margin-bottom: 0;
     margin-top: 10px;
-    padding-bottom: 10px;
+    margin: 0 auto;
+    padding: 0;
     color: #F2784B;
     background-color: transparent;
 }
@@ -23,6 +24,12 @@
     display: inline-block;
     font-size: 24px;
     margin: 2px auto;
+}
+
+@media screen and (max-width: 600px) {
+    .label {
+        /*font-size: 18px;*/
+    }
 }
 
 .label:hover {
@@ -72,8 +79,7 @@
     background-color: #2c3e50;
 }
 
-.btn-search,
-.btn-back {
+.btn-search {
     color: #ffffff;
     font-weight: bold;
     margin: 0.5em auto;
@@ -81,6 +87,24 @@
     padding: 10px 30px;
     background-color: #2c3e50;
     border-color: #2c3e50;
+}
+
+.btn-back {
+    color: #ffffff;
+    font-weight: bold;
+    margin: 0.5em auto;
+    padding: 10px 30px;
+    background-color: #F2784B;
+    border-color: #F2784B;
+}
+
+.btn-back:hover,
+.btn-back:focus,
+.btn-back:active {
+    color: #000000;
+    font-weight: bold;
+    background-color: #F2784B;
+    border-color: #F2784B;
 }
 
 .list-group {
@@ -874,4 +898,11 @@ Result list
     line-height: 50px;
     text-indent: 10px;
     margin: auto;
+}
+
+#listData a {
+    float: right;
+    margin-right: 12px;
+    font-size: 15px;
+    font-weight: bold;
 }

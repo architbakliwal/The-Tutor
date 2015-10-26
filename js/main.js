@@ -22,8 +22,6 @@ jQuery(document).ready(function($) {
     var content = document.getElementById("content");
     var navHeight = $('.top-bar').height();
     var pageHeight = $('.pt-page-2').height();
-    console.log(navHeight);
-    console.log(pageHeight);
     $('#resultContainer').css('height', parseInt(pageHeight - navHeight));
 
     // Initialize Scroller
@@ -43,12 +41,14 @@ jQuery(document).ready(function($) {
 
     var insertItems = function() {
 
-        for (var i = 0; i < 15; i++) {
+        for (var i = 0; i < 25; i++) {
 
             var row = document.createElement("div");
             row.className = "rowData";
             row.style.backgroundColor = i % 2 > 0 ? "#ddd" : "";
-            row.innerHTML = i;
+            // var data = "<div><span>Teacher name " + i + "</span><button class='btn btn-info' type='button'>Contact</button></div>";
+            var data = "<div id='listData'><span>Teacher name " + i + "</span><a href='#'>Contact</a></div>";
+            row.innerHTML = data;
 
             content.appendChild(row);
         }
