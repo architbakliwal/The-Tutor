@@ -19,8 +19,11 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     visibility: hidden;
     overflow: hidden;
+    background: #ffffff;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -50,12 +53,8 @@ transform-style: preserve-3d;
 
 /* Text Styles, Colors, Backgrounds */
 
-.pt-page-1 {
+.pt-page-1,
+.pt-page-2,
+.pt-page-3 {
     overflow: auto;
-    background: #ffffff;
-}
-
-.pt-page-2 {
-    overflow: auto;
-    background: #ffffff;
 }
