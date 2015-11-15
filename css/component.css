@@ -55,6 +55,7 @@ transform-style: preserve-3d;
 
 .pt-page-1,
 .pt-page-2,
-.pt-page-3 {
+.pt-page-3,
+.pt-page-4 {
     overflow: auto;
 }

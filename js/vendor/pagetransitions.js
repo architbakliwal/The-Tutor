@@ -38,19 +38,19 @@ var PageTransitions = (function() {
 
             animcursor.animation = 1;
             animcursor.currentPage = 0;
-            animcursor.nextPage = 2;
+            animcursor.nextPage = 3;
 
             nextPage(animcursor);
         });
 
-        $(document).on('click', '.label-college, .label-language, .label-computer, .label-dance, .label-music, .label-abacus, .label-calligraphy, .label-karatem .label-law', function() {
+        $(document).on('click', '.label-language, .label-computer, .label-dance, .label-music, .label-abacus, .label-calligraphy, .label-karate, .label-cacs, .label-law, .label-driving, .label-yoga, .label-playgroup', function() {
             if (isAnimating) {
                 return false;
             }
 
             animcursor.animation = 1;
             animcursor.currentPage = 0;
-            animcursor.nextPage = 2;
+            animcursor.nextPage = 3;
 
             nextPage(animcursor);
         });
@@ -67,6 +67,18 @@ var PageTransitions = (function() {
             nextPage(animcursor);
         });
 
+        $(document).on('click', '.label-college', function() {
+            if (isAnimating) {
+                return false;
+            }
+
+            animcursor.animation = 1;
+            animcursor.currentPage = 0;
+            animcursor.nextPage = 2;
+
+            nextPage(animcursor);
+        });
+
         $(document).on('click', '.label-class', function() {
             if (isAnimating) {
                 return false;
@@ -74,7 +86,31 @@ var PageTransitions = (function() {
 
             animcursor.animation = 1;
             animcursor.currentPage = 1;
-            animcursor.nextPage = 2;
+            animcursor.nextPage = 3;
+
+            nextPage(animcursor);
+        });
+
+        $(document).on('click', '.label-stream', function() {
+            if (isAnimating) {
+                return false;
+            }
+
+            animcursor.animation = 1;
+            animcursor.currentPage = 2;
+            animcursor.nextPage = 3;
+
+            nextPage(animcursor);
+        });
+
+        $(document).on('click', '#btn-back', function() {
+            if (isAnimating) {
+                return false;
+            }
+
+            animcursor.animation = 2;
+            animcursor.currentPage = 3;
+            animcursor.nextPage = 0;
 
             nextPage(animcursor);
         });
@@ -91,7 +127,7 @@ var PageTransitions = (function() {
             nextPage(animcursor);
         });
 
-        $(document).on('click', '#btn-back', function() {
+        $(document).on('click', '#btn-back2', function() {
             if (isAnimating) {
                 return false;
             }
