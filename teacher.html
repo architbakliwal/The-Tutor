@@ -63,16 +63,41 @@
                                     <label class="cd-label" for="cd-board">Board</label>
                                     <input class="board" type="text" name="cd-board" id="cd-board">
                                 </div>
-                                <div class="icon" id="div-stream" hidden>
-                                    <label class="cd-label" for="cd-stream">Stream</label>
-                                    <input class="class" type="text" name="cd-stream" id="cd-stream">
+                                <div id="div-stream" hidden>
+                                    <h4>Stream</h4>
+                                    <p class="cd-select icon">
+                                        <select class="stream" id="cd-stream" required>
+                                            <option value="">Select..</option>
+                                            <option value="college">Arts</option>
+                                            <option value="school">Commerce</option>
+                                            <option value="guitar">Science</option>
+                                            <option value="dance">Law</option>
+                                        </select>
+                                    </p>
                                 </div>
-                                <div class="icon" id="div-class" hidden>
-                                    <label class="cd-label" for="cd-class">Class</label>
-                                    <input class="class" type="text" name="cd-class" id="cd-class">
+                                <div id="div-school-class" hidden>
+                                    <h4>Class</h4>
+                                    <ul class="cd-form-list">
+                                        <li>
+                                            <input type="checkbox" name="school-class[]" id="cd-checkbox" required>
+                                            <label for="cd-checkbox">1</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="school-class[]" id="cd-checkbox" required>
+                                            <label for="cd-checkbox">2</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="school-class[]" id="cd-checkbox" required>
+                                            <label for="cd-checkbox">3</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="icon" id="div-college-class" hidden>
+                                    <label class="cd-label" for="cd-college-class">Class</label>
+                                    <input class="class" type="text" name="cd-college-class" id="cd-college-class">
                                 </div>
                                 <div class="icon">
-                                    <label class="cd-label" for="cd-subject">Subject</label>
+                                    <label class="cd-label" for="cd-subject">Subject (optional)</label>
                                     <input class="subject" type="text" name="cd-subject" id="cd-subject">
                                 </div>
                             </fieldset>
@@ -83,7 +108,7 @@
                                     <input class="address" type="text" name="cd-address" id="cd-address" required>
                                 </div>
                                 <div class="icon">
-                                    <label class="cd-label" for="cd-area">Area</label>
+                                    <label class="cd-label" for="cd-area">Area of teaching</label>
                                     <input class="area" type="text" name="cd-area" id="cd-area" required>
                                 </div>
                                 <div class="icon">

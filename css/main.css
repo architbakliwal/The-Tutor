@@ -562,6 +562,14 @@ Custom icons
     background: url("../img/cd-icon-budget.svg") no-repeat 16px center, url("../img/cd-required.svg") no-repeat top right;
 }
 
+.cd-form .stream {
+    background: url("../img/cd-icon-budget.svg") no-repeat 16px center;
+}
+
+.cd-form [required].stream {
+    background: url("../img/cd-icon-budget.svg") no-repeat 16px center, url("../img/cd-required.svg") no-repeat top right;
+}
+
 .cd-form .address {
     background: url("../img/cd-icon-message.svg") no-repeat 16px center;
 }

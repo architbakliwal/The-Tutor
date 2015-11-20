@@ -23,8 +23,11 @@ jQuery(document).ready(function($) {
             $("#teacher-form #div-board").show();
             $("#teacher-form #cd-board").attr("required", true);
 
-            $("#teacher-form #div-class").show();
-            $("#teacher-form #cd-class").attr("required", true);
+            $("#teacher-form #div-school-class").show();
+            $("#teacher-form #cd-school-class").attr("required", true);
+
+            $("#teacher-form #div-college-class").hide();
+            $("#teacher-form #cd-college-class").attr("required", false);
 
             $("#teacher-form #div-stream").hide();
             $("#teacher-form #cd-stream").attr("required", false);
@@ -32,8 +35,11 @@ jQuery(document).ready(function($) {
             $("#teacher-form #div-board").hide();
             $("#teacher-form #cd-board").attr("required", false);
 
-            $("#teacher-form #div-class").show();
-            $("#teacher-form #cd-class").attr("required", true);
+            $("#teacher-form #div-school-class").hide();
+            $("#teacher-form #cd-school-class").attr("required", false);
+
+            $("#teacher-form #div-college-class").show();
+            $("#teacher-form #cd-college-class").attr("required", true);
 
             $("#teacher-form #div-stream").show();
             $("#teacher-form #cd-stream").attr("required", true);
@@ -41,8 +47,11 @@ jQuery(document).ready(function($) {
             $("#teacher-form #div-board").hide();
             $("#teacher-form #cd-board").attr("required", false);
 
-            $("#teacher-form #div-class").hide();
-            $("#teacher-form #cd-class").attr("required", false);
+            $("#teacher-form #div-school-class").hide();
+            $("#teacher-form #cd-school-class").attr("required", false);
+
+            $("#teacher-form #div-college-class").hide();
+            $("#teacher-form #cd-college-class").attr("required", false);
 
             $("#teacher-form #div-stream").hide();
             $("#teacher-form #cd-stream").attr("required", false);
