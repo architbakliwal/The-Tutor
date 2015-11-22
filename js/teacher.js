@@ -1,4 +1,13 @@
 jQuery(document).ready(function($) {
+
+    function isValid(object) {
+        if (object === undefined || object === null || object.length === 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     if ($('.floating-labels').length > 0) floatLabels();
 
     function floatLabels() {
@@ -56,6 +65,47 @@ jQuery(document).ready(function($) {
             $("#teacher-form #div-stream").hide();
             $("#teacher-form #cd-stream").attr("required", false);
         }
-
     });
+
+    $("#teacher-form").validate({
+        rules: {
+            'cd-mobile': {
+                required: true,
+                number: true,
+                minlength: 10,
+                maxlength: 10
+            }
+        },
+        debug: true,
+        submitHandler: function(form) {
+            var skill = $('#cd-skill').val();
+            if (skill === "school") {
+                if ($('input[name="school-class[]"]:checked').length === 0) {
+                    alert('Please select atleast one class');
+                    return false;
+                }
+            }
+            if (!isValid($('input[name="radio-mode"]:checked').val())) {
+                alert('Teaching mode is a required field');
+                return false;
+            }
+            $(form).ajaxSubmit({
+                success: function(responseText, statusText, xhr, $form) {
+                    console.log(statusText);
+                }
+            });
+        }
+    });
+
+    /*$("#save-teacher").click(function() {
+        jQuery('#teacher-form').ajaxSubmit({
+            beforeSubmit: function(p1, p2, p3) {
+                console.log(p1, p2, p3);
+            },
+            success: function(responseText, statusText, xhr, $form) {
+                console.log(responseText);
+            }
+        });
+    });
+    */
 });

@@ -1,4 +1,3 @@
-<!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
@@ -29,7 +28,7 @@
         <![endif]-->
             <!-- Main jumbotron for a primary marketing message or call to action -->
             <nav class="top-bar">
-                <div class="register"><a href="index.html">Do a search</a></div>
+                <div class="register"><a href="index.php">Do a search</a></div>
             </nav>
             <div class="container">
                 <div class="jumbotron">
@@ -50,7 +49,7 @@
                                 <div>
                                     <h4>What do you teach?</h4>
                                     <p class="cd-select icon">
-                                        <select class="skill" id="cd-skill" required>
+                                        <select class="skill" id="cd-skill" name="cd-skill "required>
                                             <option value="">Select..</option>
                                             <option value="school">School</option>
                                             <option value="college">College</option>
@@ -66,7 +65,7 @@
                                 <div id="div-stream" hidden>
                                     <h4>Stream</h4>
                                     <p class="cd-select icon">
-                                        <select class="stream" id="cd-stream" required>
+                                        <select class="stream" id="cd-stream" name="cd-stream" required>
                                             <option value="">Select..</option>
                                             <option value="college">Arts</option>
                                             <option value="school">Commerce</option>
@@ -79,16 +78,16 @@
                                     <h4>Class</h4>
                                     <ul class="cd-form-list">
                                         <li>
-                                            <input type="checkbox" name="school-class[]" id="cd-checkbox" required>
-                                            <label for="cd-checkbox">1</label>
+                                            <input type="checkbox" name="school-class[]" value="class 1" id="cd-checkbox1">
+                                            <label for="cd-checkbox1">1</label>
                                         </li>
                                         <li>
-                                            <input type="checkbox" name="school-class[]" id="cd-checkbox" required>
-                                            <label for="cd-checkbox">2</label>
+                                            <input type="checkbox" name="school-class[]" value="class 2" id="cd-checkbox2">
+                                            <label for="cd-checkbox2">2</label>
                                         </li>
                                         <li>
-                                            <input type="checkbox" name="school-class[]" id="cd-checkbox" required>
-                                            <label for="cd-checkbox">3</label>
+                                            <input type="checkbox" name="school-class[]" value="class 3" id="cd-checkbox3">
+                                            <label for="cd-checkbox3">3</label>
                                         </li>
                                     </ul>
                                 </div>
@@ -113,7 +112,7 @@
                                 </div>
                                 <div class="icon">
                                     <label class="cd-label" for="cd-mobile">Mobile Number</label>
-                                    <input class="mobile" type="number" name="cd-mobile" id="cd-mobile" required>
+                                    <input class="mobile" type="text" name="cd-mobile" id="cd-mobile" required>
                                 </div>
                             </fieldset>
                             <fieldset>
@@ -122,11 +121,11 @@
                                     <h4>Mode of teaching?</h4>
                                     <ul class="cd-form-list">
                                         <li>
-                                            <input type="radio" name="radio-button" id="cd-radio-1" required>
+                                            <input type="radio" name="radio-mode" value="private tutor" id="cd-radio-1">
                                             <label for="cd-radio-1">Private Tutor</label>
                                         </li>
                                         <li>
-                                            <input type="radio" name="radio-button" id="cd-radio-2" required>
+                                            <input type="radio" name="radio-mode" value="classes" id="cd-radio-2">
                                             <label for="cd-radio-2">Classes</label>
                                         </li>
                                     </ul>
@@ -140,7 +139,7 @@
                                     <textarea class="message" name="cd-experience" id="cd-experience"></textarea>
                                 </div>
                                 <div>
-                                    <input type="submit" value="Submit">
+                                    <input type="submit" value="Submit" id="save-teacher">
                                 </div>
                             </fieldset>
                         </form>
@@ -150,7 +149,7 @@
                 <footer>
                     <p>
                         <span>&copy; thetutor.in 2015</span>
-                        <span style="float:right"><a href="terms.html">Terms & Conditions</a></span>
+                        <span style="float:right"><a href="terms.php">Terms & Conditions</a></span>
                     </p>
                 </footer>
             </div>
@@ -158,6 +157,8 @@
         </div>
     </div>
     <script src="js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="js/vendor/jquery.form.js"></script>
+    <script src="js/vendor/jquery.validate.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/vendor/pagetransitions.js"></script>
     <script src="js/teacher.js"></script>

@@ -29,7 +29,7 @@
         <![endif]-->
             <!-- Main jumbotron for a primary marketing message or call to action -->
             <nav class="top-bar">
-                <div class="register"><a href="teacher.html">Register as a teacher</a></div>
+                <div class="register"><a href="teacher.php">Register as a teacher</a></div>
                 <div class="register" style="float: right;"><a href="http://www.thetutor.in/exambaba/">Question paper</a></div>
             </nav>
             <div class="container">
@@ -75,7 +75,7 @@
                 <footer>
                     <p>
                         <span>&copy; thetutor.in 2015</span>
-                        <span style="float:right"><a href="terms.html">Terms & Conditions</a></span>
+                        <span style="float:right"><a href="terms.php">Terms & Conditions</a></span>
                     </p>
                 </footer>
             </div>
@@ -119,7 +119,7 @@
                 <footer>
                     <p>
                         <span>&copy; thetutor.in 2015</span>
-                        <span style="float:right"><a href="terms.html">Terms & Conditions</a></span>
+                        <span style="float:right"><a href="terms.php">Terms & Conditions</a></span>
                     </p>
                 </footer>
             </div>
@@ -157,7 +157,7 @@
                 <footer>
                     <p>
                         <span>&copy; thetutor.in 2015</span>
-                        <span style="float:right"><a href="terms.html">Terms & Conditions</a></span>
+                        <span style="float:right"><a href="terms.php">Terms & Conditions</a></span>
                     </p>
                 </footer>
             </div>
