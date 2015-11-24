@@ -108,4 +108,40 @@ jQuery(document).ready(function($) {
         });
     });
     */
+
+    $("#map").gmap3();
+
+    $("#cd-address").autocomplete({
+            source: function() {
+                $("#map").gmap3({
+                    getaddress: {
+                        address: $(this).val(),
+                        callback: function(results) {
+                            if (!results) return;
+                            $("#cd-address").autocomplete("display", results, false);
+                        }
+                    }
+                });
+            },
+            cb: {
+                cast: function(item) {
+                    return item.formatted_address;
+                },
+                select: function(item) {
+                    console.log(item);
+                    /*$("#test").gmap3({
+                        clear: "marker",
+                        marker: {
+                            latLng: item.geometry.location
+                        },
+                        map: {
+                            options: {
+                                center: item.geometry.location,
+                            }
+                        }
+                    });*/
+                }
+            }
+        })
+        .focus();
 });

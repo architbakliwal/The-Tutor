@@ -22,6 +22,7 @@
 </head>
 
 <body>
+    <?php include dirname( __FILE__ ).'/config.php'; ?>
     <div id="pt-main" class="pt-perspective">
         <div class="pt-page pt-page-1">
             <!--[if lt IE 8]>
@@ -46,7 +47,7 @@
                 <hr>
                 <footer>
                     <p>
-                        <span>&copy; thetutor.in 2015</span>
+                        <span>&copy; thetutor.in <?php echo $year ?></span>
                         <span style="float:right"><a href="terms.php">Terms & Conditions</a></span>
                     </p>
                 </footer>

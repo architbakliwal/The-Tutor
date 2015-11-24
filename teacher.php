@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <?php include dirname( __FILE__ ).'/config.php'; ?>
     <div id="pt-main" class="pt-perspective">
         <div class="pt-page pt-page-1">
             <!--[if lt IE 8]>
@@ -49,7 +50,7 @@
                                 <div>
                                     <h4>What do you teach?</h4>
                                     <p class="cd-select icon">
-                                        <select class="skill" id="cd-skill" name="cd-skill "required>
+                                        <select class="skill" id="cd-skill" name="cd-skill"required>
                                             <option value="">Select..</option>
                                             <option value="school">School</option>
                                             <option value="college">College</option>
@@ -67,10 +68,10 @@
                                     <p class="cd-select icon">
                                         <select class="stream" id="cd-stream" name="cd-stream" required>
                                             <option value="">Select..</option>
-                                            <option value="college">Arts</option>
-                                            <option value="school">Commerce</option>
-                                            <option value="guitar">Science</option>
-                                            <option value="dance">Law</option>
+                                            <option value="arts">Arts</option>
+                                            <option value="commerce">Commerce</option>
+                                            <option value="science">Science</option>
+                                            <option value="law">Law</option>
                                         </select>
                                     </p>
                                 </div>
@@ -143,12 +144,13 @@
                                 </div>
                             </fieldset>
                         </form>
+                        <div id="map" class="gmap3"></div>
                     </div>
                 </div>
                 <hr>
                 <footer>
                     <p>
-                        <span>&copy; thetutor.in 2015</span>
+                        <span>&copy; thetutor.in <?php echo $year ?></span>
                         <span style="float:right"><a href="terms.php">Terms & Conditions</a></span>
                     </p>
                 </footer>
@@ -159,6 +161,9 @@
     <script src="js/vendor/jquery-1.11.2.min.js"></script>
     <script src="js/vendor/jquery.form.js"></script>
     <script src="js/vendor/jquery.validate.js"></script>
+    <script src="js/vendor/jquery-autocomplete.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <script src="js/vendor/gmap3.js" type="text/javascript"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/vendor/pagetransitions.js"></script>
     <script src="js/teacher.js"></script>
