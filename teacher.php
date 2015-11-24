@@ -40,7 +40,8 @@
                 <!-- Example row of columns -->
                 <div class="row">
                     <div class="col-md-12">
-                        <form class="cd-form floating-labels" id="teacher-form" method="POST" action="teacher-processor.php">
+                        <form class="cd-form floating-labels" id="teacher-form" method="POST" action="teacher-processor.php" autocomplete="off">
+                            <input autocomplete="false" name="hidden" type="text" style="display:none;">
                             <fieldset>
                                 <legend>Personal Info</legend>
                                 <div class="icon">
@@ -163,7 +164,7 @@
     <script src="js/vendor/jquery.validate.js"></script>
     <script src="js/vendor/jquery-autocomplete.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
-    <script src="js/vendor/gmap3.js" type="text/javascript"></script>
+    <script src="js/vendor/gmap3.min.js" type="text/javascript"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/vendor/pagetransitions.js"></script>
     <script src="js/teacher.js"></script>
