@@ -76,12 +76,11 @@ jQuery(document).ready(function($) {
                 maxlength: 10
             }
         },
-        debug: true,
         submitHandler: function(form) {
             var skill = $('#cd-skill').val();
             if (skill === "school") {
                 if ($('input[name="school-class[]"]:checked').length === 0) {
-                    alert('Please select atleast one class');
+                    alert('Please select atleast one Class which you teach');
                     return false;
                 }
             }
@@ -89,6 +88,18 @@ jQuery(document).ready(function($) {
                 alert('Teaching mode is a required field');
                 return false;
             }
+            var addr = $('#cd-address').val();
+            if (!addr || !addr.length) return;
+            $("#map").gmap3({
+                getlatlng: {
+                    address: addr,
+                    callback: function(results) {
+                        if (!results) return;
+                        $('#cd-latitude').val(results[0].geometry.location.lat());
+                        $('#cd-longitude').val(results[0].geometry.location.lng());
+                    }
+                }
+            });
             $(form).ajaxSubmit({
                 success: function(responseText, statusText, xhr, $form) {
                     console.log(statusText);
@@ -109,6 +120,21 @@ jQuery(document).ready(function($) {
     });
     */
 
+    $('#save-latlng').click(function() {
+        var addr = $('#cd-address').val();
+        if (!addr || !addr.length) return;
+        $("#map").gmap3({
+            getlatlng: {
+                address: addr,
+                callback: function(results) {
+                    if (!results) return;
+                    $('#cd-latitude').val(results[0].geometry.location.lat());
+                    $('#cd-longitude').val(results[0].geometry.location.lng());
+                }
+            }
+        });
+    });
+
     $("#map").gmap3();
 
     $("#cd-address").autocomplete({
@@ -118,7 +144,18 @@ jQuery(document).ready(function($) {
                         address: $(this).val(),
                         callback: function(results) {
                             if (!results) return;
-                            $("#cd-address").autocomplete("display", results, false);
+                            var data = [];
+                            $.each(results, function(i, result) {
+                                for (var j = 0; j < result.address_components.length; j++) {
+                                    if (result.address_components[j].short_name == "IN") {
+                                        data.push(result);
+                                        return;
+                                    }
+                                }
+                            });
+                            if (data.length) {
+                                $('#cd-address').autocomplete('display', data, false);
+                            }
                         }
                     }
                 });
@@ -128,18 +165,8 @@ jQuery(document).ready(function($) {
                     return item.formatted_address;
                 },
                 select: function(item) {
-                    console.log(item);
-                    /*$("#test").gmap3({
-                        clear: "marker",
-                        marker: {
-                            latLng: item.geometry.location
-                        },
-                        map: {
-                            options: {
-                                center: item.geometry.location,
-                            }
-                        }
-                    });*/
+                    $('#cd-latitude').val(item.geometry.location.lat());
+                    $('#cd-longitude').val(item.geometry.location.lng());
                 }
             }
         })

@@ -14,8 +14,8 @@ $mobile = strip_tags( trim( $_POST["cd-mobile"] ) );
 $mode = strip_tags( trim( $_POST["radio-mode"] ) );
 $education = strip_tags( trim( $_POST["cd-education"] ) );
 $experience = strip_tags( trim( $_POST["cd-experience"] ) );
-$latitude = "72.43";
-$longitude = "18.88";
+$latitude = strip_tags( trim( $_POST["cd-latitude"] ) );
+$longitude = strip_tags( trim( $_POST["cd-longitude"] ) );
 
 $school_class = '';
 
@@ -38,6 +38,8 @@ $finalmobile = htmlspecialchars( $mobile, ENT_QUOTES, 'UTF-8' );
 $finalmode = htmlspecialchars( $mode, ENT_QUOTES, 'UTF-8' );
 $finaleducation = htmlspecialchars( $education, ENT_QUOTES, 'UTF-8' );
 $finalexperience = htmlspecialchars( $experience, ENT_QUOTES, 'UTF-8' );
+$finallatitude = htmlspecialchars( $latitude, ENT_QUOTES, 'UTF-8' );
+$finallongitude = htmlspecialchars( $longitude, ENT_QUOTES, 'UTF-8' );
 $finalschoolclass = htmlspecialchars( $school_class, ENT_QUOTES, 'UTF-8' );
 
 if($finalskill == 'school') {
@@ -48,7 +50,7 @@ if($finalskill == 'school') {
 
 $otp = mt_rand(1000, 9999);
 
-$sqlteacher = "INSERT INTO `teacher`(`name`, `skill`, `stream`, `board`, `class`, `subject`, `address`, `area`, `mobile_number`, `latitude`, `longitude`, `mode`, `qualifications`, `experience`, `otp`, `created_time`) VALUES ('".mysql_real_escape_string( $finalname )."', '".mysql_real_escape_string( $finalskill )."', '".mysql_real_escape_string( $finalboard )."', '".mysql_real_escape_string( $finalstream )."', '".mysql_real_escape_string( $class )."', '".mysql_real_escape_string( $finalsubject )."', '".mysql_real_escape_string( $finaladdress )."', '".mysql_real_escape_string( $finalarea )."', '".mysql_real_escape_string( $finalmobile )."', '".mysql_real_escape_string( $latitude )."', '".mysql_real_escape_string( $longitude )."', '".mysql_real_escape_string( $finalmode )."', '".mysql_real_escape_string( $finaleducation )."', '".mysql_real_escape_string( $finalexperience )."', '".mysql_real_escape_string( $otp )."', '".mysql_real_escape_string( $now )."')";
+$sqlteacher = "INSERT INTO `teacher`(`name`, `skill`, `stream`, `board`, `class`, `subject`, `address`, `area`, `mobile_number`, `latitude`, `longitude`, `mode`, `qualifications`, `experience`, `otp`, `created_time`) VALUES ('".mysql_real_escape_string( $finalname )."', '".mysql_real_escape_string( $finalskill )."', '".mysql_real_escape_string( $finalboard )."', '".mysql_real_escape_string( $finalstream )."', '".mysql_real_escape_string( $class )."', '".mysql_real_escape_string( $finalsubject )."', '".mysql_real_escape_string( $finaladdress )."', '".mysql_real_escape_string( $finalarea )."', '".mysql_real_escape_string( $finalmobile )."', '".mysql_real_escape_string( $finallatitude )."', '".mysql_real_escape_string( $finallongitude )."', '".mysql_real_escape_string( $finalmode )."', '".mysql_real_escape_string( $finaleducation )."', '".mysql_real_escape_string( $finalexperience )."', '".mysql_real_escape_string( $otp )."', '".mysql_real_escape_string( $now )."')";
 
 
 $insertteacher = mysql_query( $sqlteacher );
