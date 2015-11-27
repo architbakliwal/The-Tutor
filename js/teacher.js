@@ -80,12 +80,22 @@ jQuery(document).ready(function($) {
             var skill = $('#cd-skill').val();
             if (skill === "school") {
                 if ($('input[name="school-class[]"]:checked').length === 0) {
-                    alert('Please select atleast one Class which you teach');
+                    swal({
+                        title: "Error!",
+                        text: "Please select atleast one Class which you teach",
+                        type: "error",
+                        animation: false
+                    });
                     return false;
                 }
             }
             if (!isValid($('input[name="radio-mode"]:checked').val())) {
-                alert('Teaching mode is a required field');
+                swal({
+                    title: "Error!",
+                    text: "Teaching mode is a required field",
+                    type: "error",
+                    animation: false
+                });
                 return false;
             }
             var addr = $('#cd-address').val();
@@ -102,7 +112,22 @@ jQuery(document).ready(function($) {
             });
             $(form).ajaxSubmit({
                 success: function(responseText, statusText, xhr, $form) {
-                    console.log(statusText);
+                    if (responseText === "P" && statusText === "success") {
+                        swal({
+                            title: "Success!",
+                            text: "Thank you registering!!",
+                            type: "success",
+                            animation: false
+                        });
+                        $("#teacher-form")[0].reset();
+                    } else {
+                        swal({
+                            title: "Error!",
+                            text: responseText,
+                            type: "error",
+                            animation: false
+                        });
+                    }
                 }
             });
         }
@@ -138,37 +163,36 @@ jQuery(document).ready(function($) {
     $("#map").gmap3();
 
     $("#cd-address").autocomplete({
-            source: function() {
-                $("#map").gmap3({
-                    getaddress: {
-                        address: $(this).val(),
-                        callback: function(results) {
-                            if (!results) return;
-                            var data = [];
-                            $.each(results, function(i, result) {
-                                for (var j = 0; j < result.address_components.length; j++) {
-                                    if (result.address_components[j].short_name == "IN") {
-                                        data.push(result);
-                                        return;
-                                    }
+        source: function() {
+            $("#map").gmap3({
+                getaddress: {
+                    address: $(this).val(),
+                    callback: function(results) {
+                        if (!results) return;
+                        var data = [];
+                        $.each(results, function(i, result) {
+                            for (var j = 0; j < result.address_components.length; j++) {
+                                if (result.address_components[j].short_name == "IN") {
+                                    data.push(result);
+                                    return;
                                 }
-                            });
-                            if (data.length) {
-                                $('#cd-address').autocomplete('display', data, false);
                             }
+                        });
+                        if (data.length) {
+                            $('#cd-address').autocomplete('display', data, false);
                         }
                     }
-                });
-            },
-            cb: {
-                cast: function(item) {
-                    return item.formatted_address;
-                },
-                select: function(item) {
-                    $('#cd-latitude').val(item.geometry.location.lat());
-                    $('#cd-longitude').val(item.geometry.location.lng());
                 }
+            });
+        },
+        cb: {
+            cast: function(item) {
+                return item.formatted_address;
+            },
+            select: function(item) {
+                $('#cd-latitude').val(item.geometry.location.lat());
+                $('#cd-longitude').val(item.geometry.location.lng());
             }
-        })
-        .focus();
+        }
+    });
 });

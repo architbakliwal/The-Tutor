@@ -12,11 +12,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/bootstrap_new.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap_new.css">
     <link rel="stylesheet" type="text/css" href="css/component.css" />
     <link rel="stylesheet" type="text/css" href="css/animations.css" />
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/sweet-alert.css">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 
@@ -53,10 +54,20 @@
                                         <p class="cd-select icon">
                                             <select class="skill" id="cd-skill" name="cd-skill" required>
                                                 <option value="">Select..</option>
-                                                <option value="school">School</option>
-                                                <option value="college">College</option>
-                                                <option value="guitar">Guitar</option>
-                                                <option value="dance">Dance</option>
+                                                <option value="school" >School</option>
+                                                <option value="college" >College</option>
+                                                <option value="language" >Language</option>
+                                                <option value="computer" >Computer</option>
+                                                <option value="dance" >Dance</option>
+                                                <option value="music" >Music</option>
+                                                <option value="abacus" >Abacus</option>
+                                                <option value="calligraphy" >Calligraphy</option>
+                                                <option value="karate" >Karate</option>
+                                                <option value="ca-cs" >CA / CS</option>
+                                                <option value="law-judiciary" >Law / Judiciary</option>
+                                                <option value="driving" >Driving</option>
+                                                <option value="yoga" >Yoga</option>
+                                                <option value="playgroup" >Play Group</option>
                                             </select>
                                         </p>
                                     </div>
@@ -90,6 +101,34 @@
                                             <li>
                                                 <input type="checkbox" name="school-class[]" value="class 3" id="cd-checkbox3">
                                                 <label for="cd-checkbox3">3</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="school-class[]" value="class 4" id="cd-checkbox3">
+                                                <label for="cd-checkbox4">4</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="school-class[]" value="class 5" id="cd-checkbox3">
+                                                <label for="cd-checkbox5">5</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="school-class[]" value="class 6" id="cd-checkbox3">
+                                                <label for="cd-checkbox6">6</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="school-class[]" value="class 7" id="cd-checkbox3">
+                                                <label for="cd-checkbox7">7</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="school-class[]" value="class 8" id="cd-checkbox3">
+                                                <label for="cd-checkbox8">8</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="school-class[]" value="class 9" id="cd-checkbox3">
+                                                <label for="cd-checkbox9">9</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="school-class[]" value="class 10" id="cd-checkbox3">
+                                                <label for="cd-checkbox10">10</label>
                                             </li>
                                         </ul>
                                     </div>
@@ -161,15 +200,16 @@
                 <!-- /container -->
             </div>
         </div>
-        <script src="js/vendor/jquery-1.11.2.min.js"></script>
-        <script src="js/vendor/jquery.form.js"></script>
-        <script src="js/vendor/jquery.validate.js"></script>
-        <script src="js/vendor/jquery-autocomplete.js"></script>
-        <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
-        <script src="js/vendor/gmap3.min.js" type="text/javascript"></script>
-        <script src="js/vendor/bootstrap.min.js"></script>
-        <script src="js/vendor/pagetransitions.js"></script>
-        <script src="js/teacher.js"></script>
+        <script type="text/javascript" src="js/vendor/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="js/vendor/jquery.form.js"></script>
+        <script type="text/javascript" src="js/vendor/jquery.validate.js"></script>
+        <script type="text/javascript" src="js/vendor/jquery-autocomplete.js"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="js/vendor/gmap3.min.js"></script>
+        <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/vendor/sweet-alert.min.js"></script>
+        <script type="text/javascript" src="js/vendor/pagetransitions.js"></script>
+        <script type="text/javascript" src="js/teacher.js"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
         /*(function(b, o, i, l, e, r) { b.GoogleAnalyticsObject = l; b[l] || (b[l] = function() { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date; e = o.createElement(i); r = o.getElementsByTagName(i)[0]; e.src = '//www.google-analytics.com/analytics.js'; r.parentNode.insertBefore(e, r) }(window, document, 'script', 'ga')); ga('create', 'UA-XXXXX-X', 'auto'); ga('send', 'pageview');

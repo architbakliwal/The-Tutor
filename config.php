@@ -18,14 +18,14 @@
 	    $baseurl = 'http://thetutor.in/';
 	}
 
-	// error_reporting(0);
+	error_reporting(0);
 
-	error_reporting(E_ALL & ~E_NOTICE);
+	// error_reporting(E_ALL & ~E_NOTICE);
 	
 	// Enter your default time zone
 	date_default_timezone_set('Asia/Kolkata');
 	
-	$now = date("d-m-Y H:i:s");
+	$now = date("Y-m-d H:i:s");
 	
 	// Enter Next Year here!
 	$year = date("Y");
