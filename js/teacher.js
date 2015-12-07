@@ -1,5 +1,7 @@
 jQuery(document).ready(function($) {
 
+    var UID;
+
     function isValid(object) {
         if (object === undefined || object === null || object.length === 0) {
             return false;
@@ -112,18 +114,34 @@ jQuery(document).ready(function($) {
             });
             $(form).ajaxSubmit({
                 success: function(responseText, statusText, xhr, $form) {
-                    if (responseText === "P" && statusText === "success") {
-                        swal({
-                            title: "Success!",
-                            text: "Thank you registering!!",
-                            type: "success",
-                            animation: false
+                    var response = JSON.parse(responseText);
+                    // console.log(response);
+                    // console.log(JSON.parse(response[0]));
+                    // console.log(JSON.parse(response[1]));
+                    // console.log(JSON.parse(response[1]).UID);
+
+                    UID = (JSON.parse(response[1]).UID) - 1;
+                    // console.log(UID);
+                    if (JSON.parse(response[0]).Status === "Success") {
+                        var SM = new SimpleModal({
+                            "closeButton": false,
+                            "hideFooter": true,
+                            "overlayClick": false
                         });
-                        $("#teacher-form")[0].reset();
+                        SM.show({
+                            "model": "modal",
+                            "title": "OTP Verification",
+                            "contents": '<form class="cd-form floating-labels" id="teacher-otp" method="POST" action="teacher-otp.php" autocomplete="off"> <input autocomplete="false" name="hidden" type="text" style="display:none;"> <fieldset> <h4>Please enter the 4-digit OTP you have received on your registered mobile address</h4> <div class="icon"> <label class="cd-label" for="cd-otp">OTP</label> <input class="user" type="number" name="cd-otp" id="cd-otp" required> </div> <input type="text" name="cd-uid" id="cd-uid" style="display:none;"> <div> <input type="submit" value="Verify" id="verify"> </div></fieldset></form>'
+                        });
+
+                        $('#cd-uid').val(UID);
+
+                        if ($('.floating-labels').length > 0) floatLabels();
+                        submitOTP();
                     } else {
                         swal({
                             title: "Error!",
-                            text: responseText,
+                            text: JSON.parse(response[0]).Status,
                             type: "error",
                             animation: false
                         });
@@ -133,17 +151,6 @@ jQuery(document).ready(function($) {
         }
     });
 
-    /*$("#save-teacher").click(function() {
-        jQuery('#teacher-form').ajaxSubmit({
-            beforeSubmit: function(p1, p2, p3) {
-                console.log(p1, p2, p3);
-            },
-            success: function(responseText, statusText, xhr, $form) {
-                console.log(responseText);
-            }
-        });
-    });
-    */
 
     $('#save-latlng').click(function() {
         var addr = $('#cd-address').val();
@@ -195,4 +202,62 @@ jQuery(document).ready(function($) {
             }
         }
     });
+
+    /* OTP Modal */
+    $('#modal').click(function() {
+        var SM = new SimpleModal({
+            "closeButton": false,
+            "hideFooter": true,
+            "overlayClick": false
+        });
+        SM.show({
+            "model": "modal",
+            "title": "OTP Verification",
+            "contents": '<form class="cd-form floating-labels" id="teacher-otp" method="POST" action="teacher-otp.php" autocomplete="off"> <input autocomplete="false" name="hidden" type="text" style="display:none;"> <fieldset> <h4>Please enter the 4-digit OTP you have received on your registered mobile number.</h4> <div class="icon"> <label class="cd-label" for="cd-otp">OTP</label> <input class="user" type="number" name="cd-otp" id="cd-otp" required> </div><div> <input type="submit" value="Verify" id="verify"> </div></fieldset></form>'
+        });
+    });
+
+    function submitOTP() {
+        $("#teacher-otp").validate({
+            rules: {
+                'cd-otp': {
+                    required: true,
+                    number: true,
+                    minlength: 4,
+                    maxlength: 4
+                }
+            },
+            submitHandler: function(form) {
+                $(form).ajaxSubmit({
+                    success: function(responseText, statusText, xhr, $form) {
+                        if (responseText === "P" && statusText === "success") {
+                            swal({
+                                title: "Success!",
+                                text: "Thank you registering!!",
+                                type: "success",
+                                animation: false
+                            });
+                            // Remove Overlay
+                            try {
+                                $('#simple-modal-overlay').remove()();
+                            } catch (err) {}
+
+                            // Remove Modal
+                            try {
+                                $('#simple-modal').remove()();
+                            } catch (err) {}
+                            $("#teacher-form")[0].reset();
+                        } else {
+                            swal({
+                                title: "Error!",
+                                text: "Incorrect OTP.",
+                                type: "error",
+                                animation: false
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    }
 });

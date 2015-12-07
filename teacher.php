@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="css/animations.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/sweet-alert.css">
+    <link rel="stylesheet" type="text/css" href="css/simplemodal.css">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 
@@ -146,14 +147,18 @@
                                     <div class="icon">
                                         <label class="cd-label" for="cd-address">Address</label>
                                         <input class="address" type="text" name="cd-address" id="cd-address" required>
+                                        <h4>For better accuracy please mention PIN code in address.</h4>
                                     </div>
+
                                     <div class="icon">
-                                        <label class="cd-label" for="cd-area">Area of teaching</label>
+                                        <label class="cd-label" for="cd-area">Area</label>
                                         <input class="area" type="text" name="cd-area" id="cd-area" required>
+                                        <h4>Landmark / Area of the place where you teach.</h4>
                                     </div>
                                     <div class="icon">
                                         <label class="cd-label" for="cd-mobile">Mobile Number</label>
                                         <input class="mobile" type="text" name="cd-mobile" id="cd-mobile" required>
+                                        <h4>10 digits only.</h4>
                                     </div>
                                     <input type="text" name="cd-latitude" id="cd-latitude" style="display:none">
                                     <input type="text" name="cd-longitude" id="cd-longitude" style="display:none">
@@ -174,16 +179,19 @@
                                         </ul>
                                     </div>
                                     <div class="icon">
-                                        <label class="cd-label" for="cd-education">Education Qualifications</label>
+                                        <label class="cd-label" for="cd-education">Education Qualifications (optional)</label>
                                         <textarea class="message" name="cd-education" id="cd-education"></textarea>
                                     </div>
                                     <div class="icon">
-                                        <label class="cd-label" for="cd-experience">Experience</label>
+                                        <label class="cd-label" for="cd-experience">Experience (optional)</label>
                                         <textarea class="message" name="cd-experience" id="cd-experience"></textarea>
                                     </div>
                                     <div>
                                         <input type="submit" value="Submit" id="save-teacher">
                                     </div>
+                                    <!-- <div>
+                                        <input type="button" value="Verify" id="modal">
+                                    </div> -->
                                 </fieldset>
                             </form>
                             <div id="map" class="gmap3"></div>
@@ -201,6 +209,8 @@
             </div>
         </div>
         <script type="text/javascript" src="js/vendor/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="js/vendor/mootools-core-1.3.1.js"></script>
+        <script type="text/javascript" src="js/vendor/mootools-more-1.3.1.1.js"></script>
         <script type="text/javascript" src="js/vendor/jquery.form.js"></script>
         <script type="text/javascript" src="js/vendor/jquery.validate.js"></script>
         <script type="text/javascript" src="js/vendor/jquery-autocomplete.js"></script>
@@ -209,6 +219,7 @@
         <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/vendor/sweet-alert.min.js"></script>
         <script type="text/javascript" src="js/vendor/pagetransitions.js"></script>
+        <script type="text/javascript" src="js/vendor/simple-modal.js"></script>
         <script type="text/javascript" src="js/teacher.js"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

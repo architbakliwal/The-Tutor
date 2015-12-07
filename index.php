@@ -37,11 +37,11 @@
                 <div class="jumbotron">
                     <div class="container">
                         <!-- <h1>The Tutor!</h1> -->
-                        <h1>We are currently under maintenance.</h1>
+                        <h1>Something cool is coming soon.</h1>
                     </div>
                 </div>
                 <!-- Example row of columns -->
-                <div class="row">
+                <div class="row" style="display:none;">
                     <div class="col-md-12">
                         <h2>What do you want to learn?</h2>
                         <form class="cd-form floating-labels">

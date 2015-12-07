@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2015 at 10:44 AM
+-- Generation Time: Dec 07, 2015 at 08:31 PM
 -- Server version: 5.6.15-log
 -- PHP Version: 5.5.8
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `teacher`
 --
 
+DROP TABLE IF EXISTS `teacher`;
 CREATE TABLE IF NOT EXISTS `teacher` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -43,9 +44,10 @@ CREATE TABLE IF NOT EXISTS `teacher` (
   `qualifications` text,
   `experience` text,
   `otp` int(11) DEFAULT NULL,
+  `is_active` varchar(255) NOT NULL,
   `created_time` datetime DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
