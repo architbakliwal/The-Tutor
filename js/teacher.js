@@ -213,8 +213,13 @@ jQuery(document).ready(function($) {
         SM.show({
             "model": "modal",
             "title": "OTP Verification",
-            "contents": '<form class="cd-form floating-labels" id="teacher-otp" method="POST" action="teacher-otp.php" autocomplete="off"> <input autocomplete="false" name="hidden" type="text" style="display:none;"> <fieldset> <h4>Please enter the 4-digit OTP you have received on your registered mobile number.</h4> <div class="icon"> <label class="cd-label" for="cd-otp">OTP</label> <input class="user" type="number" name="cd-otp" id="cd-otp" required> </div><div> <input type="submit" value="Verify" id="verify"> </div></fieldset></form>'
+            "contents": '<form class="cd-form floating-labels" id="teacher-otp" method="POST" action="teacher-otp.php" autocomplete="off"> <input autocomplete="false" name="hidden" type="text" style="display:none;"> <fieldset> <h4>Please enter the 4-digit OTP you have received on your registered mobile address</h4> <div class="icon"> <label class="cd-label" for="cd-otp">OTP</label> <input class="user" type="number" name="cd-otp" id="cd-otp" required> </div> <input type="text" name="cd-uid" id="cd-uid" style="display:none;"> <div> <input type="submit" value="Verify" id="verify"> </div></fieldset></form>'
         });
+
+        $('#cd-uid').val(UID);
+
+        if ($('.floating-labels').length > 0) floatLabels();
+        submitOTP();
     });
 
     function submitOTP() {
