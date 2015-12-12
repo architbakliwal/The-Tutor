@@ -2,6 +2,14 @@
    Author's custom styles
    ========================================================================== */
 
+.logo-img {
+    display: block;
+    margin: 10px 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+}
+
 .row {
     text-align: center;
 }

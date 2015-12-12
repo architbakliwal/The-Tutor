@@ -13,6 +13,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/bootstrap_new.css">
     <link rel="stylesheet" type="text/css" href="css/component.css" />
@@ -37,6 +38,7 @@
                 <div class="jumbotron">
                     <div class="container">
                         <!-- <h1>The Tutor!</h1> -->
+                        <img src="img/logo.png" class="logo-img"/>
                         <h1>Something cool is coming soon.</h1>
                     </div>
                 </div>

@@ -36,7 +36,8 @@
                 <div class="container">
                     <div class="jumbotron">
                         <div class="container">
-                            <h1>The Tutor!</h1>
+                            <!-- <h1>The Tutor!</h1> -->
+                            <img src="img/logo.png" class="logo-img"/>
                         </div>
                     </div>
                     <!-- Example row of columns -->
