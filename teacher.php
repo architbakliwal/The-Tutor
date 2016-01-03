@@ -190,9 +190,9 @@
                                     <div>
                                         <input type="submit" value="Submit" id="save-teacher">
                                     </div>
-                                    <!-- <div>
+                                    <div>
                                         <input type="button" value="Verify" id="modal">
-                                    </div> -->
+                                    </div>
                                 </fieldset>
                             </form>
                             <div id="map" class="gmap3"></div>
