@@ -5,23 +5,7 @@
 <html class="no-js" lang="">
 <!--<![endif]-->
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>The Tutor</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap_new.css">
-    <link rel="stylesheet" type="text/css" href="css/component.css" />
-    <link rel="stylesheet" type="text/css" href="css/animations.css" />
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/sweet-alert.css">
-    <link rel="stylesheet" type="text/css" href="css/simplemodal.css">
-    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-</head>
-
+<?php include dirname( __FILE__ ).'/header.php'; ?>
 <body>
     <?php include dirname( __FILE__ ).'/config.php'; ?>
         <div id="pt-main" class="pt-perspective">
@@ -199,12 +183,7 @@
                         </div>
                     </div>
                     <hr>
-                    <footer>
-                        <p>
-                            <span>&copy; thetutor.in <?php echo $year ?></span>
-                            <span style="float:right"><a href="terms.php">Terms & Conditions</a></span>
-                        </p>
-                    </footer>
+                    <?php include 'footer.php'; ?>
                 </div>
                 <!-- /container -->
             </div>

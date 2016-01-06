@@ -6,20 +6,7 @@
 <html class="no-js" lang="">
 <!--<![endif]-->
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>The Tutor</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/bootstrap_new.css">
-    <link rel="stylesheet" type="text/css" href="css/component.css" />
-    <link rel="stylesheet" type="text/css" href="css/animations.css" />
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-</head>
+<?php include dirname( __FILE__ ).'/header.php'; ?>
 
 <body>
     <?php include dirname( __FILE__ ).'/config.php'; ?>
@@ -387,12 +374,7 @@
                     </div>
                 </div>
                 <hr>
-                <footer>
-                    <p>
-                        <span>&copy; thetutor.in <?php echo $year ?></span>
-                        <span style="float:right"><a href="terms.php">Terms & Conditions</a></span>
-                    </p>
-                </footer>
+                <?php include 'footer.php'; ?>
             </div>
             <!-- /container -->
         </div>
@@ -400,7 +382,6 @@
     <script src="js/vendor/jquery-1.11.2.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/vendor/pagetransitions.js"></script>
-    <script src="js/teacher.js"></script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
     /*(function(b, o, i, l, e, r) { b.GoogleAnalyticsObject = l; b[l] || (b[l] = function() { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date; e = o.createElement(i); r = o.getElementsByTagName(i)[0]; e.src = '//www.google-analytics.com/analytics.js'; r.parentNode.insertBefore(e, r) }(window, document, 'script', 'ga')); ga('create', 'UA-XXXXX-X', 'auto'); ga('send', 'pageview');
