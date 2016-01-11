@@ -32,7 +32,9 @@
                         <h2 align="center">
                             <strong>About Us</strong>
                         </h2>
-                        
+                        <div>
+                            Thetutor.in is India's simplest educational portal that connects students all over the country with tutors, educational institutes, coaching classes, etc. for all study and knowledge related requirements. We focus on simplifying the search related efforts of students and providing tutors from all aspects of learning (from school, college to music, yoga and all other fields of knowledge).
+                        </div>
                     </div>
                 </div>
                 <hr>

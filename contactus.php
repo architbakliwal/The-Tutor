@@ -32,7 +32,11 @@
                         <h2 align="center">
                             <strong>Contact Us</strong>
                         </h2>
-                        
+                        <div style="text-align:center">
+                            Email: info@thetutor.in
+                        </br>
+                            Tel: 9022110000
+                        </div>
                     </div>
                 </div>
                 <hr>
