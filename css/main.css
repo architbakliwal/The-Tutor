@@ -960,19 +960,30 @@ Result list
 #resultContainer .rowData {
     height: 50px;
     width: 100%;
-    display: block;
+    display: inline-block;
     text-align: left;
-    font-size: 20px;
-    line-height: 50px;
+    font-size: 25px;
     text-indent: 10px;
     margin: auto;
 }
 
-#listData a {
-    float: right;
-    margin-right: 12px;
+#listData #name {
+    display: inline-block;
     font-size: 15px;
-    font-weight: bold;
+    line-height: 50px;
+}
+
+#listData #viewmore {
+    color: #18BC9C;
+    margin-right: 20px;
+    float: right;
+    cursor: pointer;
+    line-height: 50px;
+    display: inline-block;
+}
+
+#student-register div {
+    margin: 10px 0;
 }
 
 .gmap3 {

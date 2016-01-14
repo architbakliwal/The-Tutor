@@ -72,7 +72,7 @@
 
 @media all and (max-width: 540px) {
     .simple-modal {
-        width: 300;
+        width: 300px;
         left: 50%;
         top: 50%;
         margin-left: -150px;

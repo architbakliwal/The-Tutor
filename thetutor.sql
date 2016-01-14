@@ -49,6 +49,24 @@ CREATE TABLE IF NOT EXISTS `teacher` (
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+
+CREATE FULLTEXT INDEX all_search
+ON teacher(skill,stream,board,class,subject)
+
+CREATE FULLTEXT INDEX basic_search
+ON teacher(skill,stream,class)
+
+DROP TABLE IF EXISTS `student`;
+CREATE TABLE IF NOT EXISTS `student` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `mobile_number` varchar(255) DEFAULT NULL,
+  `otp` int(11) DEFAULT NULL,
+  `is_active` varchar(255) NOT NULL,
+  `created_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`uid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
