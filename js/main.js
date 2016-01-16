@@ -1,6 +1,54 @@
 jQuery(document).ready(function($) {
+
     if ($('.floating-labels').length > 0) floatLabels();
-    var UID;
+
+    var container = document.getElementById("resultContainer");
+    var content = document.getElementById("content");
+    var navHeight = $('.top-bar').height();
+    var pageHeight = $('.pt-page-2').height();
+    $('#resultContainer').css('height', parseInt(pageHeight - navHeight));
+
+    // Initialize Scroller
+    var scroller = new Scroller(render, {
+        scrollingX: false
+    });
+
+    // Setup Scroller
+
+    var rect = container.getBoundingClientRect();
+
+    scroller.setPosition(rect.left + container.clientLeft, rect.top + container.clientTop);
+
+
+    var animcursor = {};
+
+    var $main = $('#pt-main'),
+        $pages = $main.children('div.pt-page'),
+        // animcursor = 1,
+        pagesCount = $pages.length,
+        current = 0,
+        isAnimating = false,
+        endCurrPage = false,
+        endNextPage = false,
+        animEndEventNames = {
+            'WebkitAnimation': 'webkitAnimationEnd',
+            'OAnimation': 'oAnimationEnd',
+            'msAnimation': 'MSAnimationEnd',
+            'animation': 'animationend'
+        },
+        // animation end event name
+        animEndEventName = animEndEventNames[Modernizr.prefixed('animation')],
+        // support css animations
+        support = Modernizr.cssanimations;
+
+    $pages.each(function() {
+        var $page = $(this);
+        $page.data('originalClassList', $page.attr('class'));
+    });
+
+    $pages.eq(current).addClass('pt-page-current');
+
+    var UID, itemUID;
 
     function isValid(object) {
         if (object === undefined || object === null || object.length === 0) {
@@ -10,10 +58,15 @@ jQuery(document).ready(function($) {
         }
     }
 
-    $(document).on('click', '#listData #viewmore', function() {
+    $(document).on('click touchstart', '#listData #viewmore i', function(el) {
+        el.stopPropagation();
+        el.preventDefault();
         var cookieVal = readCookie("thetutorregistered");
+        console.log(el);
+        itemUID = el.target.dataset.uid;
+        console.log(document.cookie);
         if (isValid(cookieVal)) {
-
+            viewMore(itemUID);
         } else {
             var SM1 = new SimpleModal({
                 "closeButton": false,
@@ -23,13 +76,11 @@ jQuery(document).ready(function($) {
             SM1.show({
                 "model": "modal",
                 "title": "Verification",
-                "contents": '<form class="cd-form floating-labels" id="student-register" method="POST" action="student-processor.php" autocomplete="off"> <input autocomplete="false" name="hidden" type="text" style="display:none;"> <fieldset style="margin:10px 0;"> <h4>Please enter your full name and mobile number for one time registration. An OTP would be sent for verification.</h4> <div class="icon"><label class="cd-label" for="cd-name">Name</label><input class="user" type="text" name="cd-name" id="cd-name" required></div><div class="icon"><label class="cd-label" for="cd-mobile">Mobile Number</label><input class="mobile" type="text" name="cd-mobile" id="cd-mobile" required><h4>10 digits only.</h4></div> <div> <input type="submit" value="Register" id="register" style="float: left;"> </div></fieldset> </form>'
+                "contents": '<form class="cd-form floating-labels" id="student-register" method="POST" action="student-processor.php" autocomplete="off"> <input autocomplete="false" name="hidden" type="text" style="display:none;"> <fieldset style="margin:10px 0;"> <h4>Please enter your full name and mobile number for one time registration. An OTP would be sent for verification.</h4> <div class="icon"><label class="cd-label" for="cd-name">Name</label><input class="user" type="text" name="cd-name" id="cd-name" required></div><div class="icon"><label class="cd-label" for="cd-mobile">Mobile Number</label><input class="mobile" type="text" name="cd-mobile" id="cd-mobile" required><h4>10 digits only.</h4></div> <div> <input type="submit" value="Register" id="register" style="float: left; margin-left:15px;"> </div><div> <input type="button" value="Cancel" id="cancel" style="float: left; margin-left:15px;"> </div></fieldset> </form>'
             });
+            if ($('.floating-labels').length > 0) floatLabels();
+            registerStudent();
         }
-        // createCookie("9920383123", 365);
-        console.log(document.cookie);
-
-
     });
 
     function createCookie(value, days) {
@@ -69,82 +120,333 @@ jQuery(document).ready(function($) {
         (inputField.val() === '') ? inputField.prev('.cd-label').removeClass('float'): inputField.prev('.cd-label').addClass('float');
     }
 
-    $("#student-register").validate({
-        rules: {
-            'cd-mobile': {
-                required: true,
-                number: true,
-                minlength: 10,
-                maxlength: 10
-            }
-        },
-        submitHandler: function(form) {
-            $(form).ajaxSubmit({
-                success: function(responseText, statusText, xhr, $form) {
-                    var response = JSON.parse(responseText);
+    function registerStudent() {
+        $("#student-register").validate({
+            rules: {
+                'cd-mobile': {
+                    required: true,
+                    number: true,
+                    minlength: 10,
+                    maxlength: 10
+                }
+            },
+            submitHandler: function(form) {
+                $(form).ajaxSubmit({
+                    success: function(responseText, statusText, xhr, $form) {
+                        var response = JSON.parse(responseText);
 
-                    UID = (JSON.parse(response[1]).UID) - 1;
+                        UID = (JSON.parse(response[1]).UID) - 1;
 
-                    if (JSON.parse(response[0]).Status === "Success") {
-                        var SM2 = new SimpleModal({
-                            "closeButton": false,
-                            "hideFooter": true,
-                            "overlayClick": false
-                        });
-                        SM2.show({
-                            "model": "modal",
-                            "title": "OTP Verification",
-                            "contents": '<form class="cd-form floating-labels" id="student-otp" method="POST" action="student-otp.php" autocomplete="off"> <input autocomplete="false" name="hidden" type="text" style="display:none;"> <fieldset style="margin:10px 0;"> <h4>Please enter the latest 4-digit OTP you have received on your registered mobile address.</h4> <div class="icon"> <label class="cd-label" for="cd-otp">OTP</label> <input class="user" type="number" name="cd-otp" id="cd-otp" required> </div> <input type="text" name="cd-uid" id="cd-uid" style="display:none;"> <div> <input type="submit" value="Verify" id="verify" style="float: left;"> </div> </fieldset> <span>If you don\'t receive OTP in 2 minutes click on resend OTP link.</span> <a href="#" style="text-decoration: underline;font-weight: bold;" id="resendOTPStudent">Resend OTP</a></form>'
-                        });
+                        if (JSON.parse(response[0]).Status === "Success") {
+                            var SM2 = new SimpleModal({
+                                "closeButton": false,
+                                "hideFooter": true,
+                                "overlayClick": false
+                            });
+                            SM2.show({
+                                "model": "modal",
+                                "title": "OTP Verification",
+                                "contents": '<form class="cd-form floating-labels" id="student-otp" method="POST" action="student-otp.php" autocomplete="off"> <input autocomplete="false" name="hidden" type="text" style="display:none;"> <fieldset style="margin:10px 0;"> <h4>Please enter the latest 4-digit OTP you have received on your registered mobile address.</h4> <div class="icon"> <label class="cd-label" for="cd-otp">OTP</label> <input class="user" type="number" name="cd-otp" id="cd-otp" required> </div> <input type="text" name="cd-uid" id="cd-uid" style="display:none;"> <div> <input type="submit" value="Verify" id="verify" style="float: left;"> </div> <div> <input type="button" value="Cancel" id="cancel" style="float: left; margin-left:15px;"> </div> </fieldset> <span>If you don\'t receive OTP in 2 minutes click on resend OTP link.</span> <a href="#" style="text-decoration: underline;font-weight: bold;" id="resendOTPStudent">Resend OTP</a></form>'
+                            });
 
-                        $('#student-otp #cd-uid').val(UID);
+                            $('#student-otp #cd-uid').val(UID);
 
-                        if ($('.floating-labels').length > 0) floatLabels();
-                        submitOTP();
-                    } else {
-                        swal({
-                            title: "Error!",
-                            text: JSON.parse(response[0]).Status,
-                            type: "error",
-                            animation: false
-                        });
+                            if ($('.floating-labels').length > 0) floatLabels();
+                            submitOTP();
+                        } else {
+                            swal({
+                                title: "Error!",
+                                text: JSON.parse(response[0]).Status,
+                                type: "error",
+                                animation: false
+                            });
+                        }
                     }
+                });
+            }
+        });
+    }
+
+    function submitOTP() {
+        $('#resendOTPStudent').click(function() {
+            var uid = $('#student-otp #cd-uid').val();
+            $.ajax({
+                type: "POST",
+                url: "resend-otp.php",
+                data: {
+                    'uid': uid
+                },
+                success: function(responseText, statusText, xhr) {
+                    swal({
+                        title: "Success!",
+                        text: "OPT Resend Successful",
+                        type: "success",
+                        animation: false
+                    });
                 }
             });
+        });
+
+        $("#student-otp").validate({
+            rules: {
+                'cd-otp': {
+                    required: true,
+                    number: true,
+                    minlength: 4,
+                    maxlength: 4
+                }
+            },
+            submitHandler: function(form) {
+                $(form).ajaxSubmit({
+                    success: function(responseText, statusText, xhr, $form) {
+                        console.log(responseText, statusText, xhr);
+                        if (responseText === "P" && statusText === "success") {
+                            createCookie(Math.floor((Math.random() * 1000000) + 1), 365);
+                            viewMore(itemUID);
+                        } else {
+                            swal({
+                                title: "Error!",
+                                text: "Incorrect OTP.",
+                                type: "error",
+                                animation: false
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    function viewMore(uid) {
+        console.log(uid);
+        $.ajax({
+            type: "POST",
+            url: "viewmore-data.php",
+            data: {
+                'uid': uid
+            },
+            success: function(responseText, statusText, xhr) {
+                console.log(JSON.parse(responseText));
+                var detail = JSON.parse(responseText)[0];
+                var SM3 = new SimpleModal({
+                    "closeButton": true,
+                    "hideFooter": true,
+                    "overlayClick": true
+                });
+                SM3.show({
+                    "model": "modal",
+                    "title": detail.name,
+                    "contents": '<div></div>'
+                });
+            }
+        });
+
+
+    }
+
+    $(document).on('click', '#btn-search', function() {
+        if (isAnimating) {
+            return false;
         }
+
+        animcursor.animation = 1;
+        animcursor.currentPage = 0;
+        animcursor.nextPage = 3;
+
+        nextPage(animcursor);
+    });
+
+    $(document).on('click', '.c-skill', function(el) {
+        console.log(el);
+        var param = el.target.id;
+
+        $.ajax({
+            type: "POST",
+            url: "search.php",
+            data: {
+                'searchType': 'basic',
+                'searchVal': param
+            },
+            success: function(responseText, statusText, xhr) {
+                if (isValid(responseText)) {
+                    console.log(JSON.parse(responseText));
+                    insertItems(JSON.parse(responseText));
+                }
+            }
+        });
+
+        if (isAnimating) {
+            return false;
+        }
+
+        animcursor.animation = 1;
+        animcursor.currentPage = 0;
+        animcursor.nextPage = 3;
+
+        nextPage(animcursor);
+    });
+
+    $(document).on('click', '.label-school', function() {
+        if (isAnimating) {
+            return false;
+        }
+
+        animcursor.animation = 1;
+        animcursor.currentPage = 0;
+        animcursor.nextPage = 1;
+
+        nextPage(animcursor);
+    });
+
+    $(document).on('click', '.label-college', function() {
+        if (isAnimating) {
+            return false;
+        }
+
+        animcursor.animation = 1;
+        animcursor.currentPage = 0;
+        animcursor.nextPage = 2;
+
+        nextPage(animcursor);
+    });
+
+    $(document).on('click', '.label-class', function(el) {
+        if (isAnimating) {
+            return false;
+        }
+
+        animcursor.animation = 1;
+        animcursor.currentPage = 1;
+        animcursor.nextPage = 3;
+
+        nextPage(animcursor);
+    });
+
+    $(document).on('click', '.label-stream', function(el) {
+        if (isAnimating) {
+            return false;
+        }
+
+        animcursor.animation = 1;
+        animcursor.currentPage = 2;
+        animcursor.nextPage = 3;
+
+        nextPage(animcursor);
+    });
+
+    $(document).on('click', '#btn-back', function() {
+        if (isAnimating) {
+            return false;
+        }
+
+        animcursor.animation = 2;
+        animcursor.currentPage = 3;
+        animcursor.nextPage = 0;
+
+        nextPage(animcursor);
+    });
+
+    $(document).on('click', '#btn-back1', function() {
+        if (isAnimating) {
+            return false;
+        }
+
+        animcursor.animation = 2;
+        animcursor.currentPage = 1;
+        animcursor.nextPage = 0;
+
+        nextPage(animcursor);
+    });
+
+    $(document).on('click', '#btn-back2', function() {
+        if (isAnimating) {
+            return false;
+        }
+
+        animcursor.animation = 2;
+        animcursor.currentPage = 2;
+        animcursor.nextPage = 0;
+
+        nextPage(animcursor);
     });
 
 
-    var container = document.getElementById("resultContainer");
-    var content = document.getElementById("content");
-    var navHeight = $('.top-bar').height();
-    var pageHeight = $('.pt-page-2').height();
-    $('#resultContainer').css('height', parseInt(pageHeight - navHeight));
+    function nextPage(options) {
+        var animation = options.animation;
+        current = options.currentPage;
 
-    // Initialize Scroller
-    var scroller = new Scroller(render, {
-        scrollingX: false
-    });
+        if (isAnimating) {
+            return false;
+        }
 
-    // Setup Scroller
+        isAnimating = true;
 
-    var rect = container.getBoundingClientRect();
+        var $currPage = $pages.eq(current);
 
-    scroller.setPosition(rect.left + container.clientLeft, rect.top + container.clientTop);
+        var $nextPage = $pages.eq(options.nextPage).addClass('pt-page-current'),
+            outClass = '',
+            inClass = '';
 
+        switch (animation) {
 
+            case 1:
+                outClass = 'pt-page-moveToLeft';
+                inClass = 'pt-page-moveFromRight';
+                break;
+            case 2:
+                outClass = 'pt-page-moveToRight';
+                inClass = 'pt-page-moveFromLeft';
+                break;
+
+        }
+
+        $currPage.addClass(outClass).on(animEndEventName, function() {
+            $currPage.off(animEndEventName);
+            endCurrPage = true;
+            if (endNextPage) {
+                onEndAnimation($currPage, $nextPage);
+            }
+        });
+
+        $nextPage.addClass(inClass).on(animEndEventName, function() {
+            $nextPage.off(animEndEventName);
+            endNextPage = true;
+            if (endCurrPage) {
+                onEndAnimation($currPage, $nextPage);
+            }
+        });
+
+        if (!support) {
+            onEndAnimation($currPage, $nextPage);
+        }
+    }
+
+    function onEndAnimation($outpage, $inpage) {
+        endCurrPage = false;
+        endNextPage = false;
+        resetPage($outpage, $inpage);
+        isAnimating = false;
+    }
+
+    function resetPage($outpage, $inpage) {
+        $outpage.attr('class', $outpage.data('originalClassList'));
+        $inpage.attr('class', $inpage.data('originalClassList') + ' pt-page-current');
+    }
 
     // Fill Scroller
 
-    var insertItems = function() {
+    var insertItems = function(items) {
+        console.log(items.length);
+        content.empty();
 
-        for (var i = 0; i < 25; i++) {
+        for (var i = 0; i < items.length; i++) {
 
             var row = document.createElement("div");
             row.className = "rowData";
             row.style.backgroundColor = i % 2 > 0 ? "#ddd" : "";
+            var teacherName = items[i].name;
             // var data = "<div><span>Teacher name " + i + "</span><button class='btn btn-info' type='button'>Contact</button></div>";
-            var data = "<div id='listData'><div id='name'>Teacher name " + i + "</div><div id='viewmore'><i class='fa fa-plus-square-o'></i></div></div>";
+            var data = "<div id='listData'><div id='name'>" + teacherName + "</div><div id='viewmore'><i class='fa fa-plus-square-o' data-uid='" + items[i].uid + "'></i></div></div>";
             row.innerHTML = data;
 
             content.appendChild(row);
@@ -154,10 +456,6 @@ jQuery(document).ready(function($) {
         scroller.setDimensions(container.clientWidth, container.clientHeight, content.offsetWidth, content.offsetHeight + 15);
 
     };
-
-    insertItems();
-
-
 
     // Event Handler
 
@@ -223,4 +521,5 @@ jQuery(document).ready(function($) {
         }, false);
 
     }
+
 });

@@ -11,7 +11,7 @@ $finalmobile = htmlspecialchars( $mobile, ENT_QUOTES, 'UTF-8' );
 
 $otp = mt_rand(1000, 9999);
 
-$sqlteacher = "INSERT INTO `student`(`name`, `mobile_number``otp`, `is_active`, `created_time`) VALUES ('".mysql_real_escape_string( $finalname )."', '".mysql_real_escape_string( $finalmobile )."', '".mysql_real_escape_string( $otp )."', 'N', '".mysql_real_escape_string( $now )."')";
+$sqlteacher = "INSERT INTO `student`(`name`, `mobile_number`, `otp`, `is_active`, `created_time`) VALUES ('".mysql_real_escape_string( $finalname )."', '".mysql_real_escape_string( $finalmobile )."', '".mysql_real_escape_string( $otp )."', 'N', '".mysql_real_escape_string( $now )."')";
 
 
 $insertteacher = mysql_query( $sqlteacher );
@@ -60,7 +60,7 @@ if ($err) {
   $smsresponse = $response;
 }
 
-// $smsresponse = '{"Status":"Success","Details":"4404a938-3260-402a-b280-3accf476d023"}';
+$smsresponse = '{"Status":"Success","Details":"4404a938-3260-402a-b280-3accf476d023"}';
 $uidresponse = '{"UID":"' . $uid . '"}';
 
 array_push($json_response, $smsresponse);

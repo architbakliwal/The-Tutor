@@ -31,7 +31,6 @@ var PageTransitions = (function() {
         $pages.eq(current).addClass('pt-page-current');
 
         $(document).on('click', '#btn-search', function() {
-            console.log('ssss');
             if (isAnimating) {
                 return false;
             }
@@ -43,7 +42,22 @@ var PageTransitions = (function() {
             nextPage(animcursor);
         });
 
-        $(document).on('click', '.label-language, .label-computer, .label-dance, .label-music, .label-abacus, .label-calligraphy, .label-karate, .label-cacs, .label-law, .label-driving, .label-yoga, .label-playgroup', function() {
+        $(document).on('click', '.c-skill', function(el) {
+            console.log(el);
+            var param = el.target.id;
+
+            $.ajax({
+                type: "POST",
+                url: "search.php",
+                data: {
+                    'searchType': 'basic',
+                    'searchVal': param
+                },
+                success: function(responseText, statusText, xhr) {
+                    console.log(JSON.parse(responseText));
+                }
+            });
+
             if (isAnimating) {
                 return false;
             }
@@ -79,7 +93,7 @@ var PageTransitions = (function() {
             nextPage(animcursor);
         });
 
-        $(document).on('click', '.label-class', function() {
+        $(document).on('click', '.label-class', function(el) {
             if (isAnimating) {
                 return false;
             }
@@ -91,7 +105,7 @@ var PageTransitions = (function() {
             nextPage(animcursor);
         });
 
-        $(document).on('click', '.label-stream', function() {
+        $(document).on('click', '.label-stream', function(el) {
             if (isAnimating) {
                 return false;
             }
@@ -138,8 +152,6 @@ var PageTransitions = (function() {
 
             nextPage(animcursor);
         });
-
-
 
     }
 

@@ -25,29 +25,29 @@
                     <div class="container">
                         <!-- <h1>The Tutor!</h1> -->
                         <img src="img/logo.png" class="logo-img"/>
-                        <h1>Something cool is coming soon.</h1>
+                        <!-- <h1>Something cool is coming soon.</h1> -->
                     </div>
                 </div>
                 <!-- Example row of columns -->
-                <div class="row" style="display:none;">
+                <div class="row">
                     <div class="col-md-12">
                         <h2>What do you want to learn?</h2>
                         <form class="cd-form floating-labels">
                             <fieldset>
-                                <span class="label label-school" data-animation="5">School</span>
-                                <span class="label label-college" data-animation="5">College</span>
-                                <span class="label label-language" data-animation="5">Language</span>
-                                <span class="label label-computer" data-animation="5">Computer</span>
-                                <span class="label label-dance" data-animation="5">Dance</span>
-                                <span class="label label-music" data-animation="5">Music</span>
-                                <span class="label label-abacus" data-animation="5">Abacus</span>
-                                <span class="label label-calligraphy" data-animation="5">Calligraphy</span>
-                                <span class="label label-karate" data-animation="5">Karate</span>
-                                <span class="label label-cacs" data-animation="5">CA / CS</span>
-                                <span class="label label-law" data-animation="5">Law / Judiciary</span>
-                                <span class="label label-driving" data-animation="5">Driving</span>
-                                <span class="label label-yoga" data-animation="5">Yoga</span>
-                                <span class="label label-playgroup" data-animation="5">Play Group</span>
+                                <span class="label label-school" id="school" data-animation="5">School</span>
+                                <span class="label label-college" id="college" data-animation="5">College</span>
+                                <span class="label label-language c-skill" id="language" data-animation="5">Language</span>
+                                <span class="label label-computer c-skill" id="computer" data-animation="5">Computer</span>
+                                <span class="label label-dance c-skill" id="dance" data-animation="5">Dance</span>
+                                <span class="label label-music c-skill" id="music" data-animation="5">Music</span>
+                                <span class="label label-abacus c-skill" id="abacus" data-animation="5">Abacus</span>
+                                <span class="label label-calligraphy c-skill" id="calligraphy" data-animation="5">Calligraphy</span>
+                                <span class="label label-karate c-skill" id="karate" data-animation="5">Karate</span>
+                                <span class="label label-cacs c-skill" id="ca-cs" data-animation="5">CA / CS</span>
+                                <span class="label label-law c-skill" id="law-judiciary" data-animation="5">Law / Judiciary</span>
+                                <span class="label label-driving c-skill" id="driving" data-animation="5">Driving</span>
+                                <span class="label label-yoga c-skill" id="yoga" data-animation="5">Yoga</span>
+                                <span class="label label-playgroup c-skill" id="playgroup" data-animation="5">Play Group</span>
                             </fieldset>
                             <h3>OR</h3>
                             <fieldset>
@@ -85,16 +85,16 @@
                         <h2>What do you want to learn in school?</h2>
                         <form class="cd-form floating-labels">
                             <fieldset>
-                                <span class="label label-class" data-animation="5">Class 1</span>
-                                <span class="label label-class" data-animation="5">Class 2</span>
-                                <span class="label label-class" data-animation="5">Class 3</span>
-                                <span class="label label-class" data-animation="5">Class 4</span>
-                                <span class="label label-class" data-animation="5">Class 5</span>
-                                <span class="label label-class" data-animation="5">Class 6</span>
-                                <span class="label label-class" data-animation="5">Class 7</span>
-                                <span class="label label-class" data-animation="5">Class 8</span>
-                                <span class="label label-class" data-animation="5">Class 9</span>
-                                <span class="label label-class" data-animation="5">Class 10</span>
+                                <span class="label label-class c-class" id="class1" data-animation="5">Class 1</span>
+                                <span class="label label-class c-class" id="class2" data-animation="5">Class 2</span>
+                                <span class="label label-class c-class" id="class3" data-animation="5">Class 3</span>
+                                <span class="label label-class c-class" id="class4" data-animation="5">Class 4</span>
+                                <span class="label label-class c-class" id="class5" data-animation="5">Class 5</span>
+                                <span class="label label-class c-class" id="class6" data-animation="5">Class 6</span>
+                                <span class="label label-class c-class" id="class7" data-animation="5">Class 7</span>
+                                <span class="label label-class c-class" id="class8" data-animation="5">Class 8</span>
+                                <span class="label label-class c-class" id="class9" data-animation="5">Class 9</span>
+                                <span class="label label-class c-class" id="class10" data-animation="5">Class 10</span>
                             </fieldset>
                         </form>
                     </div>
@@ -124,10 +124,10 @@
                         <h2>What do you want to learn in college?</h2>
                         <form class="cd-form floating-labels">
                             <fieldset>
-                                <span class="label label-stream" data-animation="5">Commerce</span>
-                                <span class="label label-stream" data-animation="5">Science</span>
-                                <span class="label label-stream" data-animation="5">Arts</span>
-                                <span class="label label-stream" data-animation="5">Law</span>
+                                <span class="label label-stream c-stream" data-animation="5">Commerce</span>
+                                <span class="label label-stream c-stream" data-animation="5">Science</span>
+                                <span class="label label-stream c-stream" data-animation="5">Arts</span>
+                                <span class="label label-stream c-stream" data-animation="5">Law</span>
                             </fieldset>
                         </form>
                     </div>
@@ -151,13 +151,21 @@
             </div>
         </div>
     </div>
-    <script src="js/vendor/jquery-1.11.2.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/vendor/pagetransitions.js"></script>
-    <script src="js/vendor/Animate.js"></script>
-    <script src="js/vendor/Scroller.js"></script>
-    <script src="js/vendor/render.js"></script>
-    <script src="js/main.js"></script>
+    <script type="text/javascript" src="js/vendor/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/vendor/mootools-core-1.3.1.js"></script>
+    <script type="text/javascript" src="js/vendor/mootools-more-1.3.1.1.js"></script>
+    <script type="text/javascript" src="js/vendor/jquery.form.js"></script>
+    <script type="text/javascript" src="js/vendor/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/vendor/jquery-autocomplete.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="js/vendor/gmap3.min.js"></script>
+    <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/vendor/sweet-alert.min.js"></script>
+    <script type="text/javascript" src="js/vendor/simple-modal.js"></script>
+    <script type="text/javascript" src="js/vendor/Animate.js"></script>
+    <script type="text/javascript" src="js/vendor/Scroller.js"></script>
+    <script type="text/javascript" src="js/vendor/render.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
     /*(function(b, o, i, l, e, r) { b.GoogleAnalyticsObject = l; b[l] || (b[l] = function() { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date; e = o.createElement(i); r = o.getElementsByTagName(i)[0]; e.src = '//www.google-analytics.com/analytics.js'; r.parentNode.insertBefore(e, r) }(window, document, 'script', 'ga')); ga('create', 'UA-XXXXX-X', 'auto'); ga('send', 'pageview');

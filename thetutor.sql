@@ -50,11 +50,10 @@ CREATE TABLE IF NOT EXISTS `teacher` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
-CREATE FULLTEXT INDEX all_search
-ON teacher(skill,stream,board,class,subject)
+ALTER TABLE `teacher` ADD FULLTEXT (skill,stream,board,class,subject);
 
-CREATE FULLTEXT INDEX basic_search
-ON teacher(skill,stream,class)
+ALTER TABLE `teacher` ADD FULLTEXT (skill,stream,class);
+
 
 DROP TABLE IF EXISTS `student`;
 CREATE TABLE IF NOT EXISTS `student` (
