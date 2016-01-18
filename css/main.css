@@ -990,6 +990,28 @@ Result list
     display: none;
 }
 
+.simple-modal-body .container-fluid {
+    padding: 0;
+}
+
+.simple-modal-body .row {
+    text-align: left;
+    margin: 0;
+}
+
+.simple-modal-body .col-xs-6,
+.simple-modal-body .col-xs-12 {
+    padding: 2px 0;
+}
+
+.simple-modal-body .modal-label {
+    font-weight: bold;
+}
+
+.simple-modal-body hr {
+    margin: 6px 0;
+}
+
 ul.autocomplete {
     display: block;
     margin: 0;

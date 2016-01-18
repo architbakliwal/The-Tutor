@@ -49,9 +49,9 @@
 .simple-modal {
     width: 400px;
     left: 50%;
-    top: 50%;
+    top: 5%;
     margin-left: -200px;
-    margin-top: -200px;
+    /*margin-top: -200px;*/
     position: fixed;
     color: #808080;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -74,9 +74,9 @@
     .simple-modal {
         width: 300px;
         left: 50%;
-        top: 50%;
+        top: 5%;
         margin-left: -150px;
-        margin-top: -170px;
+        /*margin-top: -170px;*/
     }
     .simple-modal h4 {
         font-size: 15px;

@@ -10,9 +10,9 @@ $finaltype = htmlspecialchars( $type, ENT_QUOTES, 'UTF-8' );
 $finalvalue = htmlspecialchars( $value, ENT_QUOTES, 'UTF-8' );
 
 if($finaltype == "all") {
-  $sqlsearch = "SELECT * FROM `teacher` WHERE MATCH(skill,stream,board,class,subject) AGAINST('" . $finalvalue . "')";
+  $sqlsearch = "SELECT * FROM `teacher` WHERE MATCH(skill,stream,board,class,subject) AGAINST('" . $finalvalue . "') AND is_active = 'Y'";
 } else {
-  $sqlsearch = "SELECT * FROM `teacher` WHERE MATCH(skill,stream,class) AGAINST('" . $finalvalue . "')";
+  $sqlsearch = "SELECT * FROM `teacher` WHERE MATCH(skill,stream,class) AGAINST('" . $finalvalue . "') AND is_active = 'Y'";
 }
 
 $selectsearch = mysql_query($sqlsearch);

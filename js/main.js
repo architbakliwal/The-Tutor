@@ -2,6 +2,8 @@ jQuery(document).ready(function($) {
 
     if ($('.floating-labels').length > 0) floatLabels();
 
+    var latitude, longitude;
+
     var container = document.getElementById("resultContainer");
     var content = document.getElementById("content");
     var navHeight = $('.top-bar').height();
@@ -58,13 +60,31 @@ jQuery(document).ready(function($) {
         }
     }
 
+    $('#imap').gmap3({
+        getgeoloc: {
+            callback: function(latLng) {
+                if (latLng) {
+                    latitude = latLng.lat();
+                    longitude = latLng.lng();
+                } else {
+                    swal({
+                        title: "Error!",
+                        text: 'Location permission is denied. Search results might not be accurate',
+                        type: "error",
+                        animation: false
+                    });
+                }
+            }
+        }
+    });
+
     $(document).on('click touchstart', '#listData #viewmore i', function(el) {
         el.stopPropagation();
         el.preventDefault();
         var cookieVal = readCookie("thetutorregistered");
-        console.log(el);
+        // console.log(el);
         itemUID = el.target.dataset.uid;
-        console.log(document.cookie);
+        // console.log(document.cookie);
         if (isValid(cookieVal)) {
             viewMore(itemUID);
         } else {
@@ -84,11 +104,14 @@ jQuery(document).ready(function($) {
     });
 
     function createCookie(value, days) {
+        var expires;
         if (days) {
             var date = new Date();
             date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            var expires = "; expires=" + date.toGMTString();
-        } else var expires = "";
+            expires = "; expires=" + date.toGMTString();
+        } else {
+            expires = "";
+        }
         // document.cookie = name + "=" + value + expires + "; path=/; domain=.thetutor.in";
         document.cookie = "thetutorregistered=" + value + expires + "; path=/";
     }
@@ -138,6 +161,17 @@ jQuery(document).ready(function($) {
                         UID = (JSON.parse(response[1]).UID) - 1;
 
                         if (JSON.parse(response[0]).Status === "Success") {
+                            // Remove Overlay
+                            try {
+                                $('#simple-modal-overlay').remove()();
+                            } catch (err) {}
+
+                            // Remove Modal
+                            try {
+                                $('#simple-modal').remove()();
+                            } catch (err) {}
+
+
                             var SM2 = new SimpleModal({
                                 "closeButton": false,
                                 "hideFooter": true,
@@ -172,7 +206,7 @@ jQuery(document).ready(function($) {
             var uid = $('#student-otp #cd-uid').val();
             $.ajax({
                 type: "POST",
-                url: "resend-otp.php",
+                url: "resend-student-otp.php",
                 data: {
                     'uid': uid
                 },
@@ -201,6 +235,16 @@ jQuery(document).ready(function($) {
                     success: function(responseText, statusText, xhr, $form) {
                         console.log(responseText, statusText, xhr);
                         if (responseText === "P" && statusText === "success") {
+                            // Remove Overlay
+                            try {
+                                $('#simple-modal-overlay').remove()();
+                            } catch (err) {}
+
+                            // Remove Modal
+                            try {
+                                $('#simple-modal').remove()();
+                            } catch (err) {}
+
                             createCookie(Math.floor((Math.random() * 1000000) + 1), 365);
                             viewMore(itemUID);
                         } else {

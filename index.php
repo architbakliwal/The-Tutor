@@ -64,6 +64,7 @@
                 <?php include 'footer.php'; ?>
             </div>
             <!-- /container -->
+            <div id="imap" class="gmap3"></div>
         </div>
         <div class="pt-page pt-page-2">
             <!--[if lt IE 8]>
