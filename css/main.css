@@ -1012,6 +1012,27 @@ Result list
     margin: 6px 0;
 }
 
+#details input[type="button"] {
+    /* button style */
+    border: none;
+    background: #2c97de;
+    border-radius: .25em;
+    padding: 16px 20px;
+    margin-top: 5px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.6rem;
+    float: right;
+    cursor: pointer;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+}
+
 ul.autocomplete {
     display: block;
     margin: 0;

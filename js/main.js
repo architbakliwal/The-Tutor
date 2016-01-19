@@ -60,6 +60,46 @@ jQuery(document).ready(function($) {
         }
     }
 
+    function createCookie(value, days) {
+        var expires;
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toGMTString();
+        } else {
+            expires = "";
+        }
+        // document.cookie = name + "=" + value + expires + "; path=/; domain=.thetutor.in";
+        document.cookie = "thetutorregistered=" + value + expires + "; path=/";
+    }
+
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    function floatLabels() {
+        var inputFields = $('.floating-labels .cd-label').next();
+        inputFields.each(function() {
+            var singleInput = $(this);
+            //check if user is filling one of the form fields 
+            checkVal(singleInput);
+            singleInput.on('change keyup', function() {
+                checkVal(singleInput);
+            });
+        });
+    }
+
+    function checkVal(inputField) {
+        (inputField.val() === '') ? inputField.prev('.cd-label').removeClass('float'): inputField.prev('.cd-label').addClass('float');
+    }
+
     $('#imap').gmap3({
         getgeoloc: {
             callback: function(latLng) {
@@ -102,46 +142,6 @@ jQuery(document).ready(function($) {
             registerStudent();
         }
     });
-
-    function createCookie(value, days) {
-        var expires;
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toGMTString();
-        } else {
-            expires = "";
-        }
-        // document.cookie = name + "=" + value + expires + "; path=/; domain=.thetutor.in";
-        document.cookie = "thetutorregistered=" + value + expires + "; path=/";
-    }
-
-    function readCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
-
-    function floatLabels() {
-        var inputFields = $('.floating-labels .cd-label').next();
-        inputFields.each(function() {
-            var singleInput = $(this);
-            //check if user is filling one of the form fields 
-            checkVal(singleInput);
-            singleInput.on('change keyup', function() {
-                checkVal(singleInput);
-            });
-        });
-    }
-
-    function checkVal(inputField) {
-        (inputField.val() === '') ? inputField.prev('.cd-label').removeClass('float'): inputField.prev('.cd-label').addClass('float');
-    }
 
     function registerStudent() {
         $("#student-register").validate({
@@ -198,6 +198,18 @@ jQuery(document).ready(function($) {
                     }
                 });
             }
+        });
+
+        $('#student-register #cancel').click(function() {
+            // Remove Overlay
+            try {
+                $('#simple-modal-overlay').remove()();
+            } catch (err) {}
+
+            // Remove Modal
+            try {
+                $('#simple-modal').remove()();
+            } catch (err) {}
         });
     }
 
@@ -259,6 +271,18 @@ jQuery(document).ready(function($) {
                 });
             }
         });
+
+        $('#student-otp #cancel').click(function() {
+            // Remove Overlay
+            try {
+                $('#simple-modal-overlay').remove()();
+            } catch (err) {}
+
+            // Remove Modal
+            try {
+                $('#simple-modal').remove()();
+            } catch (err) {}
+        });
     }
 
     function viewMore(uid) {
@@ -270,22 +294,45 @@ jQuery(document).ready(function($) {
                 'uid': uid
             },
             success: function(responseText, statusText, xhr) {
-                console.log(JSON.parse(responseText));
-                var detail = JSON.parse(responseText)[0];
-                var SM3 = new SimpleModal({
-                    "closeButton": true,
-                    "hideFooter": true,
-                    "overlayClick": true
-                });
-                SM3.show({
-                    "model": "modal",
-                    "title": detail.name,
-                    "contents": '<div></div>'
-                });
+                if (isValid(responseText)) {
+                    console.log(JSON.parse(responseText));
+                    var detail = JSON.parse(responseText)[0];
+                    if (isValid(detail) && detail.length > 0) {
+                        var SM3 = new SimpleModal({
+                            "closeButton": true,
+                            "hideFooter": true,
+                            "overlayClick": true
+                        });
+                        SM3.show({
+                            "model": "modal",
+                            "title": detail.name,
+                            "contents": "<div id='details'> <div class='container-fluid'> <div class='row'> <div class='col-xs-6' style=''> <div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Contact: </span><span id='mobile'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Area: </span><span id='area'></span></div></div></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Address: </span><span id='address'></span></div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-6' style=''><span class='modal-label'>Skill: </span><span id='skill'></span></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Stream: </span><span id='stream'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Board: </span><span id='board'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Class: </span><span id='class'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Subject: </span><span id='subject'></span></div></div><div class='row'> <div class='col-xs-12' style=''><input type='button' value='Cancel' id='cancel' style=''></div></div></div></div>"
+                        });
+
+                        $('#details #cancel').click(function() {
+                            // Remove Overlay
+                            try {
+                                $('#simple-modal-overlay').remove()();
+                            } catch (err) {}
+
+                            // Remove Modal
+                            try {
+                                $('#simple-modal').remove()();
+                            } catch (err) {}
+                        });
+
+                        $('#details #mobile').val(detail.mobile_number);
+                        $('#details #area').val(detail.area);
+                        $('#details #address').val(detail.address);
+                        $('#details #skill').val(detail.skill);
+                        $('#details #stream').val(detail.stream);
+                        $('#details #board').val(detail.board);
+                        $('#details #class').val(detail.class);
+                        $('#details #subject').val(detail.subject);
+                    }
+                }
             }
         });
-
-
     }
 
     $(document).on('click', '#btn-search', function() {

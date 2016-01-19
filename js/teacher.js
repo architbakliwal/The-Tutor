@@ -213,7 +213,7 @@ jQuery(document).ready(function($) {
         SM.show({
             "model": "modal",
             "title": "Hello, my name is John",
-            "contents": "<div><div class='container-fluid'><div class='row'><div class='col-xs-6' style=''><div class='row'><div class='col-xs-12' style=''><span class='modal-label'>Contact: </span>9920383123</div></div><div class='row'><div class='col-xs-12' style=''><span class='modal-label'>Area: </span>asdsad asdsad adsa dsa dsad dsasa dasdsa</div></div></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Address: </span>asdsdsadsadsa sadsds dsdas sa sadsad sa</div></div><div class='row'><div class='col-xs-12' style=''><hr></div></div><div class='row'><div class='col-xs-6' style=''><span class='modal-label'>Skill: </span>Music</div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Stream: </span>Music</div></div><div class='row'><div class='col-xs-12' style=''><span class='modal-label'>Board: </span>State Board</div></div><div class='row'><div class='col-xs-12' style=''><span class='modal-label'>Class: </span>Class 2</div></div><div class='row'><div class='col-xs-12' style=''><span class='modal-label'>Subject: </span>Guitar</div></div></div></div>"
+            "contents": "<div id='details'> <div class='container-fluid'> <div class='row'> <div class='col-xs-6' style=''> <div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Contact: </span><span id='mobile'>9920383123</span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Area: </span><span id='area'>asdsad asdsad adsa</span></div></div></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Address: </span><span id='address'>asdsdsadsadsa sadsds dsdas sa sadsad sa</span></div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-6' style=''><span class='modal-label'>Skill: </span><span id='skill'>Music</span></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Stream: </span><span id='stream'>Music</span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Board: </span><span id='board'>State Board</span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Class: </span><span id='class'>Class 2</span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Subject: </span><span id='subject'>Guitar</span></div></div><div class='row'> <div class='col-xs-12' style=''><input type='button' value='Cancel' id='cancel' style=''></div></div></div></div>"
         });
 
         $('#cd-uid').val(UID);
@@ -283,6 +283,18 @@ jQuery(document).ready(function($) {
                     }
                 });
             }
+        });
+
+        $('#cancel').click(function() {
+            // Remove Overlay
+            try {
+                $('#simple-modal-overlay').remove()();
+            } catch (err) {}
+
+            // Remove Modal
+            try {
+                $('#simple-modal').remove()();
+            } catch (err) {}
         });
     }
 });
