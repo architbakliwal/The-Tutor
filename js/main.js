@@ -124,7 +124,7 @@ jQuery(document).ready(function($) {
         var cookieVal = readCookie("thetutorregistered");
         // console.log(el);
         itemUID = el.target.dataset.uid;
-        // console.log(document.cookie);
+        console.log(document.cookie);
         if (isValid(cookieVal)) {
             viewMore(itemUID);
         } else {
@@ -286,7 +286,6 @@ jQuery(document).ready(function($) {
     }
 
     function viewMore(uid) {
-        console.log(uid);
         $.ajax({
             type: "POST",
             url: "viewmore-data.php",
@@ -295,13 +294,23 @@ jQuery(document).ready(function($) {
             },
             success: function(responseText, statusText, xhr) {
                 if (isValid(responseText)) {
-                    console.log(JSON.parse(responseText));
                     var detail = JSON.parse(responseText)[0];
-                    if (isValid(detail) && detail.length > 0) {
+                    console.log(detail);
+                    if (isValid(detail)) {
+                        // Remove Overlay
+                        try {
+                            $('#simple-modal-overlay').remove()();
+                        } catch (err) {}
+
+                        // Remove Modal
+                        try {
+                            $('#simple-modal').remove()();
+                        } catch (err) {}
+
                         var SM3 = new SimpleModal({
-                            "closeButton": true,
+                            "closeButton": false,
                             "hideFooter": true,
-                            "overlayClick": true
+                            "overlayClick": false
                         });
                         SM3.show({
                             "model": "modal",
@@ -321,14 +330,14 @@ jQuery(document).ready(function($) {
                             } catch (err) {}
                         });
 
-                        $('#details #mobile').val(detail.mobile_number);
-                        $('#details #area').val(detail.area);
-                        $('#details #address').val(detail.address);
-                        $('#details #skill').val(detail.skill);
-                        $('#details #stream').val(detail.stream);
-                        $('#details #board').val(detail.board);
-                        $('#details #class').val(detail.class);
-                        $('#details #subject').val(detail.subject);
+                        $('#details #mobile').text(detail.mobile_number);
+                        $('#details #area').text(detail.area);
+                        $('#details #address').text(detail.address);
+                        $('#details #skill').text(detail.skill);
+                        $('#details #stream').text(detail.stream);
+                        $('#details #board').text(detail.board);
+                        $('#details #class').text(detail.class);
+                        $('#details #subject').text(detail.subject);
                     }
                 }
             }
@@ -360,7 +369,7 @@ jQuery(document).ready(function($) {
             },
             success: function(responseText, statusText, xhr) {
                 if (isValid(responseText)) {
-                    console.log(JSON.parse(responseText));
+                    // console.log(JSON.parse(responseText));
                     insertItems(JSON.parse(responseText));
                 }
             }

@@ -60,7 +60,7 @@ if ($err) {
   $smsresponse = $response;
 }
 
-$smsresponse = '{"Status":"Success","Details":"4404a938-3260-402a-b280-3accf476d023"}';
+$smsresponse = '{"Status":"Success","Details":"4404a938-3260-402a-b280-3accf476d023"}'; //TODO comment this.
 $uidresponse = '{"UID":"' . $uid . '"}';
 
 array_push($json_response, $smsresponse);
