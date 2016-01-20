@@ -125,10 +125,10 @@
                         <h2>What do you want to learn in college?</h2>
                         <form class="cd-form floating-labels">
                             <fieldset>
-                                <span class="label label-stream c-stream" data-animation="5">Commerce</span>
-                                <span class="label label-stream c-stream" data-animation="5">Science</span>
-                                <span class="label label-stream c-stream" data-animation="5">Arts</span>
-                                <span class="label label-stream c-stream" data-animation="5">Law</span>
+                                <span class="label label-stream c-stream" id="commerce" data-animation="5">Commerce</span>
+                                <span class="label label-stream c-stream" id="science" data-animation="5">Science</span>
+                                <span class="label label-stream c-stream" id="arts" data-animation="5">Arts</span>
+                                <span class="label label-stream c-stream" id="law" data-animation="5">Law</span>
                             </fieldset>
                         </form>
                     </div>

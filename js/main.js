@@ -345,6 +345,23 @@ jQuery(document).ready(function($) {
     }
 
     $(document).on('click', '#btn-search', function() {
+        var param = $('#cd-search').val();
+
+        $.ajax({
+            type: "POST",
+            url: "search.php",
+            data: {
+                'searchType': 'all',
+                'searchVal': param
+            },
+            success: function(responseText, statusText, xhr) {
+                if (isValid(responseText)) {
+                    // console.log(JSON.parse(responseText));
+                    insertItems(JSON.parse(responseText));
+                }
+            }
+        });
+
         if (isAnimating) {
             return false;
         }
@@ -410,7 +427,25 @@ jQuery(document).ready(function($) {
         nextPage(animcursor);
     });
 
-    $(document).on('click', '.label-class', function(el) {
+    $(document).on('click', '.c-class', function(el) {
+        console.log(el);
+        var param = el.target.id;
+
+        $.ajax({
+            type: "POST",
+            url: "search.php",
+            data: {
+                'searchType': 'basic',
+                'searchVal': param
+            },
+            success: function(responseText, statusText, xhr) {
+                if (isValid(responseText)) {
+                    // console.log(JSON.parse(responseText));
+                    insertItems(JSON.parse(responseText));
+                }
+            }
+        });
+
         if (isAnimating) {
             return false;
         }
@@ -422,7 +457,25 @@ jQuery(document).ready(function($) {
         nextPage(animcursor);
     });
 
-    $(document).on('click', '.label-stream', function(el) {
+    $(document).on('click', '.c-stream', function(el) {
+        console.log(el);
+        var param = el.target.id;
+
+        $.ajax({
+            type: "POST",
+            url: "search.php",
+            data: {
+                'searchType': 'basic',
+                'searchVal': param
+            },
+            success: function(responseText, statusText, xhr) {
+                if (isValid(responseText)) {
+                    // console.log(JSON.parse(responseText));
+                    insertItems(JSON.parse(responseText));
+                }
+            }
+        });
+
         if (isAnimating) {
             return false;
         }
