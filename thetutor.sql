@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.4
+-- version 4.0.10.7
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 07, 2015 at 08:31 PM
--- Server version: 5.6.15-log
--- PHP Version: 5.5.8
+-- Host: localhost
+-- Generation Time: Jan 21, 2016 at 12:26 PM
+-- Server version: 5.5.45-cll-lve
+-- PHP Version: 5.4.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,23 @@ SET time_zone = "+00:00";
 --
 -- Database: `thetutor`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
+DROP TABLE IF EXISTS `student`;
+CREATE TABLE IF NOT EXISTS `student` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `mobile_number` varchar(255) DEFAULT NULL,
+  `otp` int(11) DEFAULT NULL,
+  `is_active` varchar(255) NOT NULL,
+  `created_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`uid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -46,25 +63,10 @@ CREATE TABLE IF NOT EXISTS `teacher` (
   `otp` int(11) DEFAULT NULL,
   `is_active` varchar(255) NOT NULL,
   `created_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-ALTER TABLE `teacher` ADD FULLTEXT (skill,stream,board,class,subject);
-
-ALTER TABLE `teacher` ADD FULLTEXT (skill,stream,class);
-
-
-DROP TABLE IF EXISTS `student`;
-CREATE TABLE IF NOT EXISTS `student` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `mobile_number` varchar(255) DEFAULT NULL,
-  `otp` int(11) DEFAULT NULL,
-  `is_active` varchar(255) NOT NULL,
-  `created_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`uid`),
+  FULLTEXT KEY `skill` (`skill`,`stream`,`board`,`class`,`subject`),
+  FULLTEXT KEY `skill_2` (`skill`,`stream`,`class`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

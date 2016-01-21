@@ -43,7 +43,7 @@ var PageTransitions = (function() {
         });
 
         $(document).on('click', '.c-skill', function(el) {
-            console.log(el);
+            // console.log(el);
             var param = el.target.id;
 
             $.ajax({
@@ -54,7 +54,7 @@ var PageTransitions = (function() {
                     'searchVal': param
                 },
                 success: function(responseText, statusText, xhr) {
-                    console.log(JSON.parse(responseText));
+                    // console.log(JSON.parse(responseText));
                 }
             });
 

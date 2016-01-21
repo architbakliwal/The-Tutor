@@ -124,7 +124,7 @@ jQuery(document).ready(function($) {
         var cookieVal = readCookie("thetutorregistered");
         // console.log(el);
         itemUID = el.target.dataset.uid;
-        console.log(document.cookie);
+        // console.log(document.cookie);
         if (isValid(cookieVal)) {
             viewMore(itemUID);
         } else {
@@ -245,7 +245,7 @@ jQuery(document).ready(function($) {
             submitHandler: function(form) {
                 $(form).ajaxSubmit({
                     success: function(responseText, statusText, xhr, $form) {
-                        console.log(responseText, statusText, xhr);
+                        // console.log(responseText, statusText, xhr);
                         if (responseText === "P" && statusText === "success") {
                             // Remove Overlay
                             try {
@@ -295,7 +295,7 @@ jQuery(document).ready(function($) {
             success: function(responseText, statusText, xhr) {
                 if (isValid(responseText)) {
                     var detail = JSON.parse(responseText)[0];
-                    console.log(detail);
+                    // console.log(detail);
                     if (isValid(detail)) {
                         // Remove Overlay
                         try {
@@ -315,7 +315,7 @@ jQuery(document).ready(function($) {
                         SM3.show({
                             "model": "modal",
                             "title": detail.name,
-                            "contents": "<div id='details'> <div class='container-fluid'> <div class='row'> <div class='col-xs-6' style=''> <div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Contact: </span><span id='mobile'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Area: </span><span id='area'></span></div></div></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Address: </span><span id='address'></span></div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-6' style=''><span class='modal-label'>Skill: </span><span id='skill'></span></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Stream: </span><span id='stream'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Board: </span><span id='board'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Class: </span><span id='class'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Subject: </span><span id='subject'></span></div></div><div class='row'> <div class='col-xs-12' style=''><input type='button' value='Cancel' id='cancel' style=''></div></div></div></div>"
+                            "contents": "<div id='details'> <div class='container-fluid'> <div class='row'> <div class='col-xs-6' style=''> <div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Contact: </span><a href='#' id='mobile-link'><span id='mobile'></span></a></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Area: </span><span id='area'></span></div></div></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Address: </span><span id='address'></span></div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-6' style=''><span class='modal-label'>Skill: </span><span id='skill'></span></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Stream: </span><span id='stream'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Board: </span><span id='board'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Class: </span><span id='class'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Subject: </span><span id='subject'></span></div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Mode of Teaching: </span><span id='mode'></span></div></div><div class='row'> <div class='col-xs-12' style=''><input type='button' value='Cancel' id='cancel' style=''></div></div></div></div>"
                         });
 
                         $('#details #cancel').click(function() {
@@ -331,6 +331,7 @@ jQuery(document).ready(function($) {
                         });
 
                         $('#details #mobile').text(detail.mobile_number);
+                        $('#details #mobile-link').attr('href', 'tel:+91' + detail.mobile_number);
                         $('#details #area').text(detail.area);
                         $('#details #address').text(detail.address);
                         $('#details #skill').text(detail.skill);
@@ -338,6 +339,7 @@ jQuery(document).ready(function($) {
                         $('#details #board').text(detail.board);
                         $('#details #class').text(detail.class);
                         $('#details #subject').text(detail.subject);
+                        $('#details #mode').text(detail.mode);
                     }
                 }
             }
@@ -374,7 +376,7 @@ jQuery(document).ready(function($) {
     });
 
     $(document).on('click', '.c-skill', function(el) {
-        console.log(el);
+        // console.log(el);
         var param = el.target.id;
 
         $.ajax({
@@ -428,7 +430,7 @@ jQuery(document).ready(function($) {
     });
 
     $(document).on('click', '.c-class', function(el) {
-        console.log(el);
+        // console.log(el);
         var param = el.target.id;
 
         $.ajax({
@@ -458,7 +460,7 @@ jQuery(document).ready(function($) {
     });
 
     $(document).on('click', '.c-stream', function(el) {
-        console.log(el);
+        // console.log(el);
         var param = el.target.id;
 
         $.ajax({
@@ -589,7 +591,7 @@ jQuery(document).ready(function($) {
     // Fill Scroller
 
     var insertItems = function(items) {
-        console.log(items.length);
+        // console.log(items.length);
         content.empty();
 
         for (var i = 0; i < items.length; i++) {

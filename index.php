@@ -86,16 +86,16 @@
                         <h2>What do you want to learn in school?</h2>
                         <form class="cd-form floating-labels">
                             <fieldset>
-                                <span class="label label-class c-class" id="class1" data-animation="5">Class 1</span>
-                                <span class="label label-class c-class" id="class2" data-animation="5">Class 2</span>
-                                <span class="label label-class c-class" id="class3" data-animation="5">Class 3</span>
-                                <span class="label label-class c-class" id="class4" data-animation="5">Class 4</span>
-                                <span class="label label-class c-class" id="class5" data-animation="5">Class 5</span>
-                                <span class="label label-class c-class" id="class6" data-animation="5">Class 6</span>
-                                <span class="label label-class c-class" id="class7" data-animation="5">Class 7</span>
-                                <span class="label label-class c-class" id="class8" data-animation="5">Class 8</span>
-                                <span class="label label-class c-class" id="class9" data-animation="5">Class 9</span>
-                                <span class="label label-class c-class" id="class10" data-animation="5">Class 10</span>
+                                <span class="label label-class c-class" id="class 1" data-animation="5">Class 1</span>
+                                <span class="label label-class c-class" id="class 2" data-animation="5">Class 2</span>
+                                <span class="label label-class c-class" id="class 3" data-animation="5">Class 3</span>
+                                <span class="label label-class c-class" id="class 4" data-animation="5">Class 4</span>
+                                <span class="label label-class c-class" id="class 5" data-animation="5">Class 5</span>
+                                <span class="label label-class c-class" id="class 6" data-animation="5">Class 6</span>
+                                <span class="label label-class c-class" id="class 7" data-animation="5">Class 7</span>
+                                <span class="label label-class c-class" id="class 8" data-animation="5">Class 8</span>
+                                <span class="label label-class c-class" id="class 9" data-animation="5">Class 9</span>
+                                <span class="label label-class c-class" id="class 10" data-animation="5">Class 10</span>
                             </fieldset>
                         </form>
                     </div>
