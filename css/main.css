@@ -967,10 +967,21 @@ Result list
     margin: auto;
 }
 
-#listData #name {
+#listData #info {
     display: inline-block;
+    line-height: 25px;
+}
+
+#listData #name {
+    display: block;
     font-size: 15px;
-    line-height: 50px;
+    font-weight: bold;
+}
+
+#listData #area {
+    display: block;
+    font-size: 11px;
+    font-style: italic;
 }
 
 #listData #viewmore {
@@ -1006,6 +1017,11 @@ Result list
 
 .simple-modal-body .modal-label {
     font-weight: bold;
+}
+
+.simple-modal-body .modal-note {
+    font-size: 11px;
+    font-style: italic;
 }
 
 .simple-modal-body hr {

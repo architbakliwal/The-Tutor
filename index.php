@@ -77,7 +77,8 @@
             <div class="container">
                 <div class="jumbotron">
                     <div class="container">
-                        <h1>The Tutor!</h1>
+                        <!-- <h1>The Tutor!</h1> -->
+                        <img src="img/logo.png" class="logo-img"/>
                     </div>
                 </div>
                 <!-- Example row of columns -->
@@ -116,7 +117,8 @@
             <div class="container">
                 <div class="jumbotron">
                     <div class="container">
-                        <h1>The Tutor!</h1>
+                        <!-- <h1>The Tutor!</h1> -->
+                        <img src="img/logo.png" class="logo-img"/>
                     </div>
                 </div>
                 <!-- Example row of columns -->
@@ -128,7 +130,7 @@
                                 <span class="label label-stream c-stream" id="commerce" data-animation="5">Commerce</span>
                                 <span class="label label-stream c-stream" id="science" data-animation="5">Science</span>
                                 <span class="label label-stream c-stream" id="arts" data-animation="5">Arts</span>
-                                <span class="label label-stream c-stream" id="law" data-animation="5">Law</span>
+                                <span class="label label-stream c-stream" id="law-judiciary" data-animation="5">Law</span>
                             </fieldset>
                         </form>
                     </div>

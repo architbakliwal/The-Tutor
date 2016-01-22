@@ -315,7 +315,7 @@ jQuery(document).ready(function($) {
                         SM3.show({
                             "model": "modal",
                             "title": detail.name,
-                            "contents": "<div id='details'> <div class='container-fluid'> <div class='row'> <div class='col-xs-6' style=''> <div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Contact: </span><a href='#' id='mobile-link'><span id='mobile'></span></a></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Area: </span><span id='area'></span></div></div></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Address: </span><span id='address'></span></div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-6' style=''><span class='modal-label'>Skill: </span><span id='skill'></span></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Stream: </span><span id='stream'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Board: </span><span id='board'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Class: </span><span id='class'></span></div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Subject: </span><span id='subject'></span></div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Mode of Teaching: </span><span id='mode'></span></div></div><div class='row'> <div class='col-xs-12' style=''><input type='button' value='Cancel' id='cancel' style=''></div></div></div></div>"
+                            "contents": "<div id='details'> <div class='container-fluid'> <div class='row'> <div class='col-xs-6' style=''> <div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Contact: </span><a href='#' id='mobile-link'><span id='mobile'></span></a> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Area: </span><span id='area'></span> </div></div></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Address: </span><span id='address'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-6' style=''><span class='modal-label'>Skill: </span><span id='skill'></span> </div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Stream: </span><span id='stream'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Board: </span><span id='board'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Class: </span><span id='class'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Subject: </span><span id='subject'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Mode of Teaching: </span><span id='mode'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <input type='button' value='Cancel' id='cancel' style=''> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-note'>* When contacting the tutor please provide reference of Thetutor.in</span> </div></div></div></div>"
                         });
 
                         $('#details #cancel').click(function() {
@@ -589,7 +589,6 @@ jQuery(document).ready(function($) {
     }
 
     // Fill Scroller
-
     var insertItems = function(items) {
         // console.log(items.length);
         content.empty();
@@ -601,7 +600,29 @@ jQuery(document).ready(function($) {
             row.style.backgroundColor = i % 2 > 0 ? "#ddd" : "";
             var teacherName = items[i].name;
             // var data = "<div><span>Teacher name " + i + "</span><button class='btn btn-info' type='button'>Contact</button></div>";
-            var data = "<div id='listData'><div id='name'>" + teacherName + "</div><div id='viewmore'><i class='fa fa-plus-square-o' data-uid='" + items[i].uid + "'></i></div></div>";
+            var data = "<div id='listData'><div id='info'> <div id='name'>" + teacherName + "</div><div id='area'>" + items[i].area + "</div></div><div id='viewmore'><i class='fa fa-plus-square-o' data-uid='" + items[i].uid + "'></i> </div></div>";
+            row.innerHTML = data;
+
+            content.appendChild(row);
+        }
+
+        // Update Scroller dimensions for changed content
+        scroller.setDimensions(container.clientWidth, container.clientHeight, content.offsetWidth, content.offsetHeight + 15);
+
+    };
+
+    // Fill Scroller
+    var insertItemsTest = function() {
+        content.empty();
+
+        for (var i = 0; i < 20; i++) {
+
+            var row = document.createElement("div");
+            row.className = "rowData";
+            row.style.backgroundColor = i % 2 > 0 ? "#ddd" : "";
+            var teacherName = " Teacher name " + i;
+            // var data = "<div><span>Teacher name " + i + "</span><button class='btn btn-info' type='button'>Contact</button></div>";
+            var data = "<div id='listData'><div id='info'> <div id='name'>" + teacherName + "</div><div id='area'>Charni Road</div></div><div id='viewmore'><i class='fa fa-plus-square-o' data-uid='" + i + "'></i> </div></div>";
             row.innerHTML = data;
 
             content.appendChild(row);

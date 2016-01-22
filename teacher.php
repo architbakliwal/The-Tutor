@@ -69,7 +69,7 @@
                                                 <option value="arts">Arts</option>
                                                 <option value="commerce">Commerce</option>
                                                 <option value="science">Science</option>
-                                                <option value="law">Law</option>
+                                                <!-- <option value="law">Law</option> -->
                                             </select>
                                         </p>
                                     </div>
