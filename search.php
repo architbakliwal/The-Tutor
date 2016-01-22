@@ -32,9 +32,11 @@ $finallat = htmlspecialchars( $lat, ENT_QUOTES, 'UTF-8' );
 $finallng = htmlspecialchars( $lng, ENT_QUOTES, 'UTF-8' );
 
 if($finaltype == "all") {
-  $sqlsearch = "SELECT * FROM `teacher` WHERE MATCH(skill,stream,board,class,subject) AGAINST('" . $finalvalue . "*' IN BOOLEAN MODE) AND is_active = 'Y'";
+  // $sqlsearch = "SELECT * FROM `teacher` WHERE MATCH(skill,stream,board,class,subject) AGAINST('" . $finalvalue . "*' IN BOOLEAN MODE) AND is_active = 'Y'";
+  $sqlsearch = "SELECT * FROM `teacher` WHERE (skill LIKE '%" . $finalvalue . " %' OR stream LIKE '%" . $finalvalue . "%' OR board LIKE '%" . $finalvalue . "%' OR class LIKE '%" . $finalvalue . "%' OR subject LIKE '%" . $finalvalue . "%') AND is_active = 'Y'";
 } else {
-  $sqlsearch = "SELECT * FROM `teacher` WHERE MATCH(skill,stream,class) AGAINST('" . $finalvalue . "*' IN BOOLEAN MODE) AND is_active = 'Y'";
+  // $sqlsearch = "SELECT * FROM `teacher` WHERE MATCH(skill,stream,class) AGAINST('" . $finalvalue . "*' IN BOOLEAN MODE) AND is_active = 'Y'";
+  $sqlsearch = "SELECT * FROM `teacher` WHERE (skill LIKE '%" . $finalvalue . "%' OR stream LIKE '%" . $finalvalue . "%' OR class LIKE '%" . $finalvalue . "%') AND is_active = 'Y'";;
 }
 
 $selectsearch = mysql_query($sqlsearch);
