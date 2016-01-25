@@ -364,6 +364,8 @@ jQuery(document).ready(function($) {
             }
         });
 
+        insertItemsTest();
+
         if (isAnimating) {
             return false;
         }
@@ -620,9 +622,12 @@ jQuery(document).ready(function($) {
             var row = document.createElement("div");
             row.className = "rowData";
             row.style.backgroundColor = i % 2 > 0 ? "#ddd" : "";
-            var teacherName = " Teacher name " + i;
+            var teacherName = "Teacher name " + i + " - some random big text for tesitng line two";
+            var teacherName = "Teacher name " + i;
+            var area = "Charni Road - some random big text for tesitng line two";
+            var area = "Charni Road";
             // var data = "<div><span>Teacher name " + i + "</span><button class='btn btn-info' type='button'>Contact</button></div>";
-            var data = "<div id='listData'><div id='info'> <div id='name'>" + teacherName + "</div><div id='area'>Charni Road</div></div><div id='viewmore'><i class='fa fa-plus-square-o' data-uid='" + i + "'></i> </div></div>";
+            var data = "<div id='listData'><div id='info'> <div id='name'>" + teacherName + "</div><div id='area'>" + area + "</div></div><div id='viewmore'><i class='fa fa-plus-square-o' data-uid='" + i + "'></i> </div></div>";
             row.innerHTML = data;
 
             content.appendChild(row);
