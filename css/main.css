@@ -302,6 +302,13 @@ Form
     float: left;
 }
 
+.cd-form .skill-list li {
+    /* wrapper for radio and checkbox input types */
+    width: 50%;
+    text-align: left;
+    margin: 0;
+}
+
 .cd-form input[type=radio],
 .cd-form input[type=checkbox] {
     /* hide original check and radio buttons */

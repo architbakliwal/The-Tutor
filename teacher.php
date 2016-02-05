@@ -37,29 +37,137 @@
                                     </div>
                                     <div>
                                         <h4>What do you teach?</h4>
-                                        <p class="cd-select icon">
-                                            <select class="skill" id="cd-skill" name="cd-skill" required>
-                                                <option value="">Select..</option>
-                                                <option value="school" >School</option>
-                                                <option value="college" >College</option>
-                                                <option value="language" >Language</option>
-                                                <option value="computer" >Computer</option>
-                                                <option value="dance" >Dance</option>
-                                                <option value="music" >Music</option>
-                                                <option value="abacus" >Abacus</option>
-                                                <option value="calligraphy" >Calligraphy</option>
-                                                <option value="karate" >Karate</option>
-                                                <option value="ca-cs" >CA / CS</option>
-                                                <option value="law-judiciary" >Law / Judiciary</option>
-                                                <option value="driving" >Driving</option>
-                                                <option value="yoga" >Yoga</option>
-                                                <option value="playgroup" >Play Group</option>
-                                            </select>
-                                        </p>
+                                        <ul class="cd-form-list skill-list">
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="school" id="cd-skill1">
+                                                <label for="cd-skill1">School</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="college" id="cd-skill2">
+                                                <label for="cd-skill2">College</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="language" id="cd-skill3">
+                                                <label for="cd-skill3">Language</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="computer" id="cd-skill4">
+                                                <label for="cd-skill4">Computer</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="dance" id="cd-skill5">
+                                                <label for="cd-skill5">Dance</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="music" id="cd-skill6">
+                                                <label for="cd-skill6">Music</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="abacus" id="cd-skill7">
+                                                <label for="cd-skill7">Abacus</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="calligraphy" id="cd-skill8">
+                                                <label for="cd-skill8">Calligraphy</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="karate" id="cd-skill9">
+                                                <label for="cd-skill9">Karate</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="ca-cs" id="cd-skill10">
+                                                <label for="cd-skill10">CA / CS</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="driving" id="cd-skill11">
+                                                <label for="cd-skill11">Driving</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="yoga" id="cd-skill12">
+                                                <label for="cd-skill12">Yoga</label>
+                                            </li>
+                                            <li style="width: 100%">
+                                                <input type="checkbox" name="cd-skill[]" value="playgroup" id="cd-skill13">
+                                                <label for="cd-skill13">Play Group</label>
+                                            </li>
+                                            <li style="width: 100%">
+                                                <input type="checkbox" name="cd-skill[]" value="law-judiciary" id="cd-skill14">
+                                                <label for="cd-skill14">Law / Judiciary</label>
+                                            </li>
+                                            <li style="width: 100%">
+                                                <input type="checkbox" name="cd-skill[]" value="drawing-craft" id="cd-skill15">
+                                                <label for="cd-skill15">Drawing / Craft</label>
+                                            </li>
+                                        </ul>
                                     </div>
                                     <div class="icon" id="div-board" hidden>
                                         <label class="cd-label" for="cd-board">Board</label>
                                         <input class="board" type="text" name="cd-board" id="cd-board">
+                                    </div>
+                                    <div id="div-school-class" hidden>
+                                        <h4>Class</h4>
+                                        <ul class="cd-form-list">
+                                                <li>
+                                                    <input type="checkbox" name="cd-skill[]" value="school" id="cd-skill1">
+                                                    <label for="cd-skill1">School</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="cd-skill[]" value="college" id="cd-skill2">
+                                                    <label for="cd-skill2">College</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="cd-skill[]" value="language" id="cd-skill3">
+                                                    <label for="cd-skill3">Language</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="cd-skill[]" value="computer" id="cd-skill4">
+                                                    <label for="cd-skill4">Computer</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="cd-skill[]" value="dance" id="cd-skill5">
+                                                    <label for="cd-skill5">Dance</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="cd-skill[]" value="music" id="cd-skill6">
+                                                    <label for="cd-skill6">Music</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="cd-skill[]" value="abacus" id="cd-skill7">
+                                                    <label for="cd-skill7">Abacus</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="cd-skill[]" value="calligraphy" id="cd-skill8">
+                                                    <label for="cd-skill8">Calligraphy</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="cd-skill[]" value="karate" id="cd-skill9">
+                                                    <label for="cd-skill9">Karate</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="cd-skill[]" value="ca-cs" id="cd-skill10">
+                                                    <label for="cd-skill10">CA / CS</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="cd-skill[]" value="driving" id="cd-skill11">
+                                                    <label for="cd-skill11">Driving</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="cd-skill[]" value="yoga" id="cd-skill12">
+                                                    <label for="cd-skill12">Yoga</label>
+                                                </li>
+                                                <li style="width: 100%">
+                                                    <input type="checkbox" name="cd-skill[]" value="playgroup" id="cd-skill13">
+                                                    <label for="cd-skill13">Play Group</label>
+                                                </li>
+                                                <li style="width: 100%">
+                                                    <input type="checkbox" name="cd-skill[]" value="law-judiciary" id="cd-skill14">
+                                                    <label for="cd-skill14">Law / Judiciary</label>
+                                                </li>
+                                                <li style="width: 100%">
+                                                    <input type="checkbox" name="cd-skill[]" value="drawing-craft" id="cd-skill15">
+                                                    <label for="cd-skill15">Drawing / Craft</label>
+                                                </li>
+                                            </ul>
                                     </div>
                                     <div id="div-stream" hidden>
                                         <h4>Stream</h4>
@@ -73,57 +181,12 @@
                                             </select>
                                         </p>
                                     </div>
-                                    <div id="div-school-class" hidden>
-                                        <h4>Class</h4>
-                                        <ul class="cd-form-list">
-                                            <li>
-                                                <input type="checkbox" name="school-class[]" value="class 1" id="cd-checkbox1">
-                                                <label for="cd-checkbox1">1</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" name="school-class[]" value="class 2" id="cd-checkbox2">
-                                                <label for="cd-checkbox2">2</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" name="school-class[]" value="class 3" id="cd-checkbox3">
-                                                <label for="cd-checkbox3">3</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" name="school-class[]" value="class 4" id="cd-checkbox3">
-                                                <label for="cd-checkbox4">4</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" name="school-class[]" value="class 5" id="cd-checkbox3">
-                                                <label for="cd-checkbox5">5</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" name="school-class[]" value="class 6" id="cd-checkbox3">
-                                                <label for="cd-checkbox6">6</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" name="school-class[]" value="class 7" id="cd-checkbox3">
-                                                <label for="cd-checkbox7">7</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" name="school-class[]" value="class 8" id="cd-checkbox3">
-                                                <label for="cd-checkbox8">8</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" name="school-class[]" value="class 9" id="cd-checkbox3">
-                                                <label for="cd-checkbox9">9</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" name="school-class[]" value="class 10" id="cd-checkbox3">
-                                                <label for="cd-checkbox10">10</label>
-                                            </li>
-                                        </ul>
-                                    </div>
                                     <div class="icon" id="div-college-class" hidden>
-                                        <label class="cd-label" for="cd-college-class">Class</label>
+                                        <label class="cd-label" for="cd-college-class">College class</label>
                                         <input class="class" type="text" name="cd-college-class" id="cd-college-class">
                                     </div>
                                     <div class="icon">
-                                        <label class="cd-label" for="cd-subject">Subject (optional)</label>
+                                        <label class="cd-label" for="cd-subject">Subjects (optional)</label>
                                         <input class="subject" type="text" name="cd-subject" id="cd-subject">
                                     </div>
                                 </fieldset>

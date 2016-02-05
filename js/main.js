@@ -122,11 +122,12 @@ jQuery(document).ready(function($) {
         el.stopPropagation();
         el.preventDefault();
         var cookieVal = readCookie("thetutorregistered");
+        cookieVal = JSON.parse(cookieVal);
         // console.log(el);
         itemUID = el.target.dataset.uid;
         // console.log(document.cookie);
         if (isValid(cookieVal)) {
-            viewMore(itemUID);
+            viewMore(itemUID, cookieVal.sid);
         } else {
             var SM1 = new SimpleModal({
                 "closeButton": false,
@@ -246,6 +247,7 @@ jQuery(document).ready(function($) {
                 $(form).ajaxSubmit({
                     success: function(responseText, statusText, xhr, $form) {
                         // console.log(responseText, statusText, xhr);
+                        var sid = $('#student-otp #cd-uid').val();
                         if (responseText === "P" && statusText === "success") {
                             // Remove Overlay
                             try {
@@ -256,9 +258,12 @@ jQuery(document).ready(function($) {
                             try {
                                 $('#simple-modal').remove()();
                             } catch (err) {}
-
-                            createCookie(Math.floor((Math.random() * 1000000) + 1), 365);
-                            viewMore(itemUID);
+                            var cookie = {
+                                'sid': sid,
+                                'code': Math.floor((Math.random() * 1000000) + 1)
+                            };
+                            createCookie(JSON.stringify(cookie), 365);
+                            viewMore(itemUID, sid);
                         } else {
                             swal({
                                 title: "Error!",
@@ -285,12 +290,13 @@ jQuery(document).ready(function($) {
         });
     }
 
-    function viewMore(uid) {
+    function viewMore(itemID, studentID) {
         $.ajax({
             type: "POST",
             url: "viewmore-data.php",
             data: {
-                'uid': uid
+                'uid': itemID,
+                'sid': studentID
             },
             success: function(responseText, statusText, xhr) {
                 if (isValid(responseText)) {
@@ -315,7 +321,7 @@ jQuery(document).ready(function($) {
                         SM3.show({
                             "model": "modal",
                             "title": detail.name,
-                            "contents": "<div id='details'> <div class='container-fluid'> <div class='row'> <div class='col-xs-6' style=''> <div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Contact: </span><a href='#' id='mobile-link'><span id='mobile'></span></a> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Area: </span><span id='area'></span> </div></div></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Address: </span><span id='address'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-6' style=''><span class='modal-label'>Skill: </span><span id='skill'></span> </div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Stream: </span><span id='stream'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Board: </span><span id='board'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Class: </span><span id='class'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Subject: </span><span id='subject'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Mode of Teaching: </span><span id='mode'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <input type='button' value='Cancel' id='cancel' style=''> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-note'>* When contacting the tutor please provide reference of Thetutor.in</span> </div></div></div></div>"
+                            "contents": "<div id='details'> <div class='container-fluid'> <div class='row'> <div class='col-xs-12' style=''><span class='modal-note'>* When contacting us provide reference of Thetutor.in</span> </div></div> <div class='row'> <div class='col-xs-6' style=''> <div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Contact: </span><a href='#' id='mobile-link'><span id='mobile'></span></a> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Area: </span><span id='area'></span> </div></div></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Address: </span><span id='address'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-6' style=''><span class='modal-label'>Skill: </span><span id='skill'></span> </div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Stream: </span><span id='stream'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Board: </span><span id='board'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Class: </span><span id='class'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Subject: </span><span id='subject'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Mode of Teaching: </span><span id='mode'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <input type='button' value='Cancel' id='cancel' style=''> </div></div></div></div>"
                         });
 
                         $('#details #cancel').click(function() {
@@ -354,7 +360,9 @@ jQuery(document).ready(function($) {
             url: "search.php",
             data: {
                 'searchType': 'all',
-                'searchVal': param
+                'searchVal': param,
+                'latitude': latitude,
+                'longitude': longitude
             },
             success: function(responseText, statusText, xhr) {
                 if (isValid(responseText)) {
@@ -386,7 +394,9 @@ jQuery(document).ready(function($) {
             url: "search.php",
             data: {
                 'searchType': 'basic',
-                'searchVal': param
+                'searchVal': param,
+                'latitude': latitude,
+                'longitude': longitude
             },
             success: function(responseText, statusText, xhr) {
                 if (isValid(responseText)) {
@@ -440,7 +450,9 @@ jQuery(document).ready(function($) {
             url: "search.php",
             data: {
                 'searchType': 'basic',
-                'searchVal': param
+                'searchVal': param,
+                'latitude': latitude,
+                'longitude': longitude
             },
             success: function(responseText, statusText, xhr) {
                 if (isValid(responseText)) {
@@ -470,7 +482,9 @@ jQuery(document).ready(function($) {
             url: "search.php",
             data: {
                 'searchType': 'basic',
-                'searchVal': param
+                'searchVal': param,
+                'latitude': latitude,
+                'longitude': longitude
             },
             success: function(responseText, statusText, xhr) {
                 if (isValid(responseText)) {

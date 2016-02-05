@@ -5,7 +5,7 @@ $json_response = array();
 
 
 $name = strip_tags( trim( $_POST["cd-name"] ) );
-$skill = strip_tags( trim( $_POST["cd-skill"] ) );
+// $skill = strip_tags( trim( $_POST["cd-skill"] ) );
 $board = strip_tags( trim( $_POST["cd-board"] ) );
 $stream = strip_tags( trim( $_POST["cd-stream"] ) );
 $college_class = strip_tags( trim( $_POST["cd-college-class"] ) );
@@ -25,6 +25,14 @@ if ( !empty( $_POST['school-class'] ) ) {
 	foreach ( $_POST['school-class'] as $entry ) {
 		$school_class = $school_class . ', ' . $entry;
 	}
+}
+
+$skill = '';
+
+if ( !empty( $_POST['cd-skill'] ) ) {
+  foreach ( $_POST['cd-skill'] as $entry ) {
+    $skill = $skill . ', ' . $entry;
+  }
 }
 
 

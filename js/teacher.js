@@ -28,39 +28,33 @@ jQuery(document).ready(function($) {
         (inputField.val() === '') ? inputField.prev('.cd-label').removeClass('float'): inputField.prev('.cd-label').addClass('float');
     }
 
-    $('#teacher-form #cd-skill').on('change', function() {
-        var skill = $(this).val();
-        if (skill === "school") {
+    $('input[name="cd-skill[]"]').on('change', function() {
+        var skill = $('input[name="cd-skill[]"]:checked').map(function() {
+            return this.value;
+        }).get().join(',');
+        // $('.Checkbox:checked').map(function() {return this.value;}).get().join(',')
+        console.log(skill);
+        if (skill.indexOf("school") > -1) {
             $("#teacher-form #div-board").show();
             $("#teacher-form #cd-board").attr("required", true);
 
             $("#teacher-form #div-school-class").show();
             $("#teacher-form #cd-school-class").attr("required", true);
-
-            $("#teacher-form #div-college-class").hide();
-            $("#teacher-form #cd-college-class").attr("required", false);
-
-            $("#teacher-form #div-stream").hide();
-            $("#teacher-form #cd-stream").attr("required", false);
-        } else if (skill === "college") {
-            $("#teacher-form #div-board").hide();
-            $("#teacher-form #cd-board").attr("required", false);
-
-            $("#teacher-form #div-school-class").hide();
-            $("#teacher-form #cd-school-class").attr("required", false);
-
-            $("#teacher-form #div-college-class").show();
-            $("#teacher-form #cd-college-class").attr("required", true);
-
-            $("#teacher-form #div-stream").show();
-            $("#teacher-form #cd-stream").attr("required", true);
         } else {
             $("#teacher-form #div-board").hide();
             $("#teacher-form #cd-board").attr("required", false);
 
             $("#teacher-form #div-school-class").hide();
             $("#teacher-form #cd-school-class").attr("required", false);
+        }
 
+        if (skill.indexOf("college") > -1) {
+            $("#teacher-form #div-college-class").show();
+            $("#teacher-form #cd-college-class").attr("required", true);
+
+            $("#teacher-form #div-stream").show();
+            $("#teacher-form #cd-stream").attr("required", true);
+        } else {
             $("#teacher-form #div-college-class").hide();
             $("#teacher-form #cd-college-class").attr("required", false);
 
@@ -213,7 +207,7 @@ jQuery(document).ready(function($) {
         SM.show({
             "model": "modal",
             "title": "Hello, my name is John",
-            "contents": "<div id='details'> <div class='container-fluid'> <div class='row'> <div class='col-xs-6' style=''> <div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Contact: </span><a href='#' id='mobile-link'><span id='mobile'></span></a> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Area: </span><span id='area'></span> </div></div></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Address: </span><span id='address'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-6' style=''><span class='modal-label'>Skill: </span><span id='skill'></span> </div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Stream: </span><span id='stream'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Board: </span><span id='board'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Class: </span><span id='class'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Subject: </span><span id='subject'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Mode of Teaching: </span><span id='mode'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <input type='button' value='Cancel' id='cancel' style=''> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-note'>* When contacting the tutor please provide reference of Thetutor.in</span> </div></div></div></div>"
+            "contents": "<div id='details'> <div class='container-fluid'> <div class='row'> <div class='col-xs-12' style=''><span class='modal-note'>* When contacting us provide reference of Thetutor.in</span> </div></div> <div class='row'> <div class='col-xs-6' style=''> <div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Contact: </span><a href='#' id='mobile-link'><span id='mobile'></span></a> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Area: </span><span id='area'></span> </div></div></div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Address: </span><span id='address'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-6' style=''><span class='modal-label'>Skill: </span><span id='skill'></span> </div><div class='col-xs-6' style='text-align: right;'><span class='modal-label'>Stream: </span><span id='stream'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Board: </span><span id='board'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Class: </span><span id='class'></span> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Subject: </span><span id='subject'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <hr> </div></div><div class='row'> <div class='col-xs-12' style=''><span class='modal-label'>Mode of Teaching: </span><span id='mode'></span> </div></div><div class='row'> <div class='col-xs-12' style=''> <input type='button' value='Cancel' id='cancel' style=''> </div></div></div></div>"
         });
 
         $('#cd-uid').val(UID);
