@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10.7
+-- version 4.1.4
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jan 21, 2016 at 12:26 PM
--- Server version: 5.5.45-cll-lve
--- PHP Version: 5.4.31
+-- Host: 127.0.0.1
+-- Generation Time: Feb 06, 2016 at 11:05 AM
+-- Server version: 5.6.15-log
+-- PHP Version: 5.5.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,6 +23,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `audit`
+--
+
+DROP TABLE IF EXISTS `audit`;
+CREATE TABLE IF NOT EXISTS `audit` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `student_id` varchar(255) NOT NULL,
+  `teacher_id` varchar(255) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`uid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student`
 --
 
@@ -35,22 +50,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `is_active` varchar(255) NOT NULL,
   `created_time` datetime DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `audit`
---
-
-DROP TABLE IF EXISTS `audit`;
-CREATE TABLE IF NOT EXISTS `audit` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `student_id` varchar(255) NOT NULL,
-  `teacher_id` varchar(255) DEFAULT NULL,
-  `created_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

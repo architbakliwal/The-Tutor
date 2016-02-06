@@ -52,11 +52,13 @@ $finallatitude = htmlspecialchars( $latitude, ENT_QUOTES, 'UTF-8' );
 $finallongitude = htmlspecialchars( $longitude, ENT_QUOTES, 'UTF-8' );
 $finalschoolclass = htmlspecialchars( $school_class, ENT_QUOTES, 'UTF-8' );
 
-if($finalskill == 'school') {
-	$class = $finalschoolclass;
+/*if($finalskill == 'school') {
+	$class = $finalschoolclass
 } else {
 	$class = $finalcollegeclass;
-}
+}*/
+
+$class = $finalschoolclass . "," . $finalcollegeclass;
 
 $otp = mt_rand(1000, 9999);
 

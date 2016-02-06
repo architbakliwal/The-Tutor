@@ -70,7 +70,7 @@ jQuery(document).ready(function($) {
             expires = "";
         }
         // document.cookie = name + "=" + value + expires + "; path=/; domain=.thetutor.in";
-        document.cookie = "thetutorregistered=" + value + expires + "; path=/";
+        document.cookie = "thetutorverified=" + value + expires + "; path=/";
     }
 
     function readCookie(name) {
@@ -121,7 +121,7 @@ jQuery(document).ready(function($) {
     $(document).on('click touchstart', '#listData #viewmore i', function(el) {
         el.stopPropagation();
         el.preventDefault();
-        var cookieVal = readCookie("thetutorregistered");
+        var cookieVal = readCookie("thetutorverified");
         cookieVal = JSON.parse(cookieVal);
         // console.log(el);
         itemUID = el.target.dataset.uid;
