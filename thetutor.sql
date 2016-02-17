@@ -31,6 +31,8 @@ CREATE TABLE IF NOT EXISTS `audit` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` varchar(255) NOT NULL,
   `teacher_id` varchar(255) DEFAULT NULL,
+  `student_latitude` varchar(255) DEFAULT NULL,
+  `student_longitude` varchar(255) DEFAULT NULL,
   `created_time` datetime DEFAULT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

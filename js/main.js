@@ -296,7 +296,9 @@ jQuery(document).ready(function($) {
             url: "viewmore-data.php",
             data: {
                 'uid': itemID,
-                'sid': studentID
+                'sid': studentID,
+                'latitude': latitude,
+                'longitude': longitude
             },
             success: function(responseText, statusText, xhr) {
                 if (isValid(responseText)) {

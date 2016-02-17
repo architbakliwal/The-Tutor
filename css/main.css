@@ -159,6 +159,11 @@ footer {
     font-size: 15px;
 }
 
+footer a,
+footer p {
+    color: #000000;
+}
+
 
 /* --------------------------------
 Form
