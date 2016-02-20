@@ -8,6 +8,7 @@
         <span>&copy; thetutor.in <?php echo $year ?></span>
         <span style="float:right">
             <a href="http://facebook.com/thetutorcompany" target="_blank"><i class="fa fa-facebook-square"></i></a>
+            <a href="http://twitter.com/thetutor_in" target="_blank"><i class="fa fa-twitter-square"></i></a>
             <a href="http://instagram.com/thetutor.in" target="_blank"><i class="fa fa-instagram"></i></a>
             <a href="https://plus.google.com/+thetutorinMumbai" target="_blank"><i class="fa fa-google-plus-square"></i></a>
         </span>
