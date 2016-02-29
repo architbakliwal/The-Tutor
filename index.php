@@ -48,6 +48,7 @@
                                 <span class="label label-driving c-skill" id="driving" data-animation="5">Driving</span>
                                 <span class="label label-yoga c-skill" id="yoga" data-animation="5">Yoga</span>
                                 <span class="label label-playgroup c-skill" id="playgroup" data-animation="5">Play Group</span>
+                                <span class="label label-fitness c-skill" id="fitness" data-animation="5">Fitness</span>
                                 <span class="label label-drawing-craft c-skill" id="drawing-craft" data-animation="5">Drawing / Craft</span>
                             </fieldset>
                             <h3>OR</h3>

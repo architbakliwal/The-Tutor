@@ -86,17 +86,21 @@
                                                 <input type="checkbox" name="cd-skill[]" value="yoga" id="cd-skill12">
                                                 <label for="cd-skill12">Yoga</label>
                                             </li>
-                                            <li style="width: 100%">
+                                            <li>
                                                 <input type="checkbox" name="cd-skill[]" value="playgroup" id="cd-skill13">
                                                 <label for="cd-skill13">Play Group</label>
                                             </li>
-                                            <li style="width: 100%">
-                                                <input type="checkbox" name="cd-skill[]" value="law-judiciary" id="cd-skill14">
-                                                <label for="cd-skill14">Law / Judiciary</label>
+                                            <li>
+                                                <input type="checkbox" name="cd-skill[]" value="fitness" id="cd-skill14">
+                                                <label for="cd-skill14">Fitness</label>
                                             </li>
                                             <li style="width: 100%">
-                                                <input type="checkbox" name="cd-skill[]" value="drawing-craft" id="cd-skill15">
-                                                <label for="cd-skill15">Drawing / Craft</label>
+                                                <input type="checkbox" name="cd-skill[]" value="law-judiciary" id="cd-skill15">
+                                                <label for="cd-skill15">Law / Judiciary</label>
+                                            </li>
+                                            <li style="width: 100%">
+                                                <input type="checkbox" name="cd-skill[]" value="drawing-craft" id="cd-skill16">
+                                                <label for="cd-skill16">Drawing / Craft</label>
                                             </li>
                                         </ul>
                                     </div>

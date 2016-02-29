@@ -131,6 +131,8 @@
 
 .simple-modal .simple-modal-body {
     padding: 15px;
+    max-height: 320px;
+    overflow: auto;
     /* Extra style */
 }
 
