@@ -9,6 +9,15 @@
 <?php include dirname( __FILE__ ).'/header.php'; ?>
 
 <body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RLZ33"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RLZ33');</script>
+<!-- End Google Tag Manager -->
     <?php include dirname( __FILE__ ).'/config.php'; ?>
     <div id="pt-main" class="pt-perspective">
         <div class="pt-page pt-page-1">
@@ -65,6 +74,16 @@
                 <hr>
                 <?php include 'footer.php'; ?>
             </div>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Front page - 3 (www.thetutor.in) -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5758882870862966"
+     data-ad-slot="3368371135"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
             <!-- /container -->
             <div id="imap" class="gmap3"></div>
         </div>
@@ -103,6 +122,7 @@
                         </form>
                     </div>
                 </div>
+                
                 <hr>
                 <?php include 'footer.php'; ?>
             </div>
@@ -171,11 +191,24 @@
     <script type="text/javascript" src="js/vendor/Scroller.js"></script>
     <script type="text/javascript" src="js/vendor/render.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
-    /*(function(b, o, i, l, e, r) { b.GoogleAnalyticsObject = l; b[l] || (b[l] = function() { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date; e = o.createElement(i); r = o.getElementsByTagName(i)[0]; e.src = '//www.google-analytics.com/analytics.js'; r.parentNode.insertBefore(e, r) }(window, document, 'script', 'ga')); ga('create', 'UA-XXXXX-X', 'auto'); ga('send', 'pageview');
+    /*(function(b, o, i, l, e, r) { b.GoogleAnalyticsObject = l; b[l] || (b[l] = function() { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date; e = o.createElement(i); r = o.getElementsByTagName(i)[0]; e.src = '//www.google-analytics.com/analytics.js'; r.parentNode.insertBefore(e, r) }(window, document, 'script', 'ga')); ga('create', 'UA-70073279-1', 'auto'); ga('send', 'pageview');
      */
     </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-70073279-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
 </body>
 
 </html>
